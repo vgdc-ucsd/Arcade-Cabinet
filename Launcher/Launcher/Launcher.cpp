@@ -13,8 +13,21 @@ std::string unescape(std::string str)
     return str.substr(5);
 }
 
-int main(int argc, char* argv[])
+int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow)
 {
-    system(unescape(argv[1]).c_str());
-	return 0;
+    STARTUPINFO si;
+    PROCESS_INFORMATION pi;
+
+    ZeroMemory(&si, sizeof(si));
+    si.cb = sizeof(si);
+    ZeroMemory(&pi, sizeof(pi));
+    std::string s = unescape(pCmdLine);
+    std::wstring ws;
+    ws.assign(s.begin(), s.end());
+    CreateProcess(NULL, (wchar_t *)ws.c_str(), NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
+    WaitForSingleObject(pi.hProcess, INFINITE);
+
+    // Close process and thread handles. 
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
 }

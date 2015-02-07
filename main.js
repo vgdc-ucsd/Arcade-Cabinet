@@ -3,6 +3,7 @@ var buttonDown = false;
 function inputLoop() {
     var gamepads = navigator.getGamepads();
     for (var playerIndex = 0; playerIndex < gamepads.length; playerIndex++) {
+        if(!document.hasFocus()) break;
         var gamepad = gamepads[playerIndex];
         if (gamepad) {
             if(gamepad.axes[0] >= 0.9 && !axisDown) {
