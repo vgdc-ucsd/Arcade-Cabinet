@@ -41,14 +41,9 @@ function inputLoop() {
 }
 inputLoop();
 
+var gameDiv;
 
-document.addEventListener('left', function (e) { console.log("left"); }, false);
-document.addEventListener('right', function (e) { console.log("right"); }, false);
-document.addEventListener('up', function (e) { console.log("up"); }, false);
-document.addEventListener('down', function (e) { console.log("down"); }, false);
-document.addEventListener('select', function (e) { console.log("select"); }, false);
-document.addEventListener('back', function (e) { console.log("back"); }, false);
-
+var first = true;
 function loadGame(name) {
     var game;
     var http_request = new XMLHttpRequest();
@@ -56,16 +51,40 @@ function loadGame(name) {
     http_request.onreadystatechange = function () {
         if (http_request.readyState === 4) {
             game = JSON.parse(http_request.responseText);
-            var gameHtml = "<div class='game'>" +
+            var gameHtml = "<div class='game " + (first ? "selected" : "") + "'>" +
                 "<a href='game:Games\\" + name + "\\" + game.Command + "'>" +
                 "<h2 class='title'>" + game.Name + "</h2>" +
                 "<img src='Games/" + name + "/" + game.Image + "' />" +
                 "<p class='description'>" + game.Description + "</p></a></div>";
-            document.getElementById("games").innerHTML += gameHtml;
+            gameDiv.innerHTML += gameHtml;
+            first = false;
         }
     };
     http_request.send(null);
 }
 
 var games = ["Distilled", "Closing"];
-games.forEach(loadGame);
+
+var selectedGame = 0;
+function select(index) {
+    gameDiv.getElementsByClassName("game")[selectedGame].classList.remove("selected");
+    if(index < 0)
+        index = games.length - 1;
+    else if(index >= games.length)
+        index = 0;
+    selectedGame = index;
+    gameDiv.getElementsByClassName("game")[selectedGame].classList.add("selected");
+}
+
+document.addEventListener('left', function (e) { select(selectedGame - 1); }, false);
+document.addEventListener('right', function (e) { select(selectedGame + 1); }, false);
+document.addEventListener('up', function (e) { select(selectedGame - 1); }, false);
+document.addEventListener('down', function (e) { select(selectedGame + 1); }, false);
+document.addEventListener('select', function (e) { gameDiv.getElementsByClassName("game")[selectedGame].children[0].click() }, false);
+document.addEventListener('back', function (e) { console.log("back"); }, false);
+
+
+document.addEventListener("DOMContentLoaded", function (e) {
+    gameDiv = document.getElementById("games");
+    games.forEach(loadGame);
+});
