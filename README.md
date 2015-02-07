@@ -6,5 +6,6 @@ It looks like the easiest way to launch native applications from a web browser i
 ##Setup
 ###For Firefox, but should be similar if you want to test with another browser
 1. Build the solution in the Launcher directory
-2. Load the page and open one of the links
-3. When prompted, associate the game: URI sceme to the Launcher.exe that was created and select to remember the choice
+2. In about:config change security.fileuri.strict_origin_policy to false if you are not serving the files through a web server so that ajax works
+3. Load the page and open one of the links
+4. When prompted, associate the game: URI sceme to the Launcher.exe that was created and select to remember the choice
