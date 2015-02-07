@@ -9,3 +9,14 @@ It looks like the easiest way to launch native applications from a web browser i
 2. In about:config change security.fileuri.strict_origin_policy to false if you are not serving the files through a web server so that ajax works
 3. Load the page and open one of the links
 4. When prompted, associate the game: URI sceme to the Launcher.exe that was created and select to remember the choice
+
+##Game format
+All games will be put in the Games subdirectory of the launcher. Each game has a directory with a name corresponding to and entry in the games array of main.js. In each individual game directory, there needs to be a Game.json file with information about the game.
+
+###Example Games.json (note the use of \\\\ in paths)
+{
+    "Name" : "Distilled",
+    "Command" : "flashplayer.exe Games\\\\Distilled\\\\Distilled.swf",
+    "Image" : "distilled.png",
+    "Description" : "Your friends will help you see the bigger picture."
+}
