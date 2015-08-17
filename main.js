@@ -59,29 +59,40 @@ function loadGame(name) {
                 "<p class='description'>" + game.Description + "</p></a></div>";
             gameDiv.innerHTML += gameHtml;
             first = false;
+            updateCarousel();
         }
     };
     http_request.send(null);
 }
 
-var games = ["Distilled", "Closing"];
+var games = ["Distilled", "Closing", "Closing", "Closing", "Closing"];
+
+function mod(num, base) {
+    return ((num % base) + base) % base;
+}
 
 var selectedGame = 0;
 function select(index) {
-    gameDiv.getElementsByClassName("game")[selectedGame].classList.remove("selected");
-    if(index < 0)
-        index = games.length - 1;
-    else if(index >= games.length)
-        index = 0;
+    var count = gameDiv.children.length;
+    gameDiv.getElementsByClassName("game")[mod(selectedGame, count)].classList.remove("selected");
     selectedGame = index;
-    gameDiv.getElementsByClassName("game")[selectedGame].classList.add("selected");
+    gameDiv.getElementsByClassName("game")[mod(selectedGame, count)].classList.add("selected");
+    updateCarousel();
+}
+
+function updateCarousel() {
+    var count = gameDiv.children.length;
+    for(var i = 0; i < count; i++) {
+        var z = Math.round((1000 / 2) / Math.tan(Math.PI / count));
+        gameDiv.children[i].style['transform'] = "rotateY(" + (i - selectedGame) * 360 / count + "deg) translateZ(" + z + "px)";
+    }
 }
 
 document.addEventListener('left', function (e) { select(selectedGame - 1); }, false);
 document.addEventListener('right', function (e) { select(selectedGame + 1); }, false);
 document.addEventListener('up', function (e) { select(selectedGame - 1); }, false);
 document.addEventListener('down', function (e) { select(selectedGame + 1); }, false);
-document.addEventListener('select', function (e) { gameDiv.getElementsByClassName("game")[selectedGame].children[0].click() }, false);
+document.addEventListener('select', function (e) { gameDiv.getElementsByClassName("game")[mod(selectedGame, gameDiv.children.length)].children[0].click() }, false);
 document.addEventListener('back', function (e) { console.log("back"); }, false);
 
 
