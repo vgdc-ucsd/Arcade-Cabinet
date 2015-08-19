@@ -26,7 +26,7 @@ angular.module('arcadeCabinet', [])
     $scope.getTransform = function(i) {
         var count = $scope.games.length;
         var z = Math.round((1000 / 2) / Math.tan(Math.PI / count));
-        $scope.transform = "translateZ(-" + z + "px) rotateY(-" + $scope.selectedGame * 360 / count + "deg)";
+        $scope.transform = "translateZ(-" + z + "px) rotateY(" + -$scope.selectedGame * 360 / count + "deg)";
         return "rotateY(" + i * 360 / count + "deg) translateZ(" + z + "px)";
     }
 
