@@ -3,7 +3,7 @@ angular.module('arcadeCabinet', [])
     $scope.selectedGame = 0;
     $scope.games = [];
 
-    var gameNames = ["Distilled", "Closing", "Closing", "Closing", "Closing"];
+    var gameNames = ["Distilled", "Closing", "Closing", "Closing", "Closing", "Closing", "Closing", "Closing", "Closing", "Distilled", "Closing", "Closing", "Closing", "Closing", "Closing", "Closing", "Closing", "Closing"];
     gameNames.forEach(function(name) {
         $http.get("Games/" + name + "/Game.json")
         .success(function(data) {
@@ -26,7 +26,8 @@ angular.module('arcadeCabinet', [])
     $scope.getTransform = function(i) {
         var count = $scope.games.length;
         var z = Math.round((1000 / 2) / Math.tan(Math.PI / count));
-        return "rotateY(" + (i - $scope.selectedGame) * 360 / count + "deg) translateZ(" + z + "px)";
+        $scope.transform = "translateZ(-" + z + "px) rotateY(-" + $scope.selectedGame * 360 / count + "deg)";
+        return "rotateY(" + i * 360 / count + "deg) translateZ(" + z + "px)";
     }
 
     var axisDown = false;
