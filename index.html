@@ -9,6 +9,7 @@
   </head>
   <body ng-controller="arcadeCtrl">
     <header>
+      <!--<img src="assets/logo.png"/>-->
       <h1>VGDC Arcade Machine</h1>
       <h2>Games made by the UCSD Video Game Development Club - Come join us on Tuesday Nights!</h2>
     </header>
@@ -16,7 +17,6 @@
       <div id="games" ng-style="{transform : transform}">
         <div ng-repeat="game in games" class="game" ng-class="{'selected' : mod(selectedGame) == $index}" ng-style="{transform : getTransform($index)}">
           <a href="vgdcgame:{{game.Command}}">
-            <!--<h2 class="title">{{game.Name}}</h2>-->
             <img src="Games/{{game.Name}}/thumbnail.png"/>
             <p class="description">{{game.Description}}</p>
             <h3 class="authors">By: {{game.Authors}}</h3>

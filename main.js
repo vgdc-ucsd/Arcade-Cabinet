@@ -7,6 +7,7 @@ class Sound {
             this.audioElms.push(new Audio(url));
         }
     }
+
     play() {
         var a = this.audioElms[this.toPlayNext];
 
@@ -27,11 +28,10 @@ angular.module('arcadeCabinet', [])
 // Remove "unsafe:" prefix that Firefox adds to the URI,
 // as in this Stack Overflow answer:
 // https://stackoverflow.com/questions/15606751/angular-changes-urls-to-unsafe-in-extension-page
-.config( [
+.config([
     '$compileProvider',
     function($compileProvider) {
         $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|vgdcgame):/);
-        // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
     }
 ])
 
@@ -49,16 +49,18 @@ angular.module('arcadeCabinet', [])
     });
 
     var gameDiv = document.getElementById("games");
+    var selectCooldown = 0;
 
     $scope.mod = function(num) {
         var base = $scope.games.length;
         return ((num % base) + base) % base;
     }
 
-    function select(delta) {
-        if (selectCooldown == 0) {
+    function move(delta) {
+        if (!selectCooldown) {
             $scope.selectedGame += delta;
             $scope.$apply();
+
             if (delta == 1) {
                 rightSound.play();
             } else if (delta == -1) {
@@ -67,41 +69,54 @@ angular.module('arcadeCabinet', [])
         }
     }
 
-    var selectCooldown = 0;
+    function select() {
+        if (!selectCooldown) {
+            gameDiv.getElementsByClassName("game")[$scope.mod($scope.selectedGame, gameDiv.children.length)].children[0].click();
+
+            confirmSound.play();
+
+            selectCooldown = true;
+            $scope.$apply();
+
+            window.setTimeout(function() {
+                selectCooldown = 0;
+                $scope.$apply();
+            }, 2000);
+        }
+    }
 
     $scope.getTransform = function(i) {
         var count = 18;//$scope.games.length;
 
         var z = Math.round((1000 / 2) / Math.tan(Math.PI / count));
 
-        var worldRotateY = -$scope.selectedGame * 360 / count;
-        var worldTranslateZ = z;
-        $scope.transform = "translateZ(-" + worldTranslateZ + "px) rotateY(" + worldRotateY + "deg)";
-
-        var gameTranslateY = 0;
-        /*if (selectCooldown && i == $scope.selectedGame) {
-            gameTranslateY = -100;
-        }*/
+        var rotateY = -$scope.selectedGame * 360 / count;
+        $scope.transform = "translateZ(" + (-z) + "px) rotateY(" + rotateY + "deg)";
 
         // Add multiples of the game list length to this index i so that
         // it's the closest to the camera.
         var length = $scope.games.length;
-        i += length * Math.floor(($scope.selectedGame-i+length/2) / length);
+        i += length * Math.floor(($scope.selectedGame-i) / length + 0.5);
 
-        var gameRotateY = i * 360 / count;
-        var gameZ = z;
-        if (selectCooldown == 1) {
-            gameZ += 200;
-        }
-        return "rotateY(" + gameRotateY + "deg)"+
-               "translateZ(" + gameZ + "px)"+
-               "translateY(" + gameTranslateY + "px)";
+        var rotateY = i * 360 / count;
+        return "rotateY(" + rotateY + "deg) translateZ(" + z + "px)";
     }
 
     var axisDown = false;
     var buttonDown = false;
+    var stepCount = 0;
 
     function inputLoop() {
+        // Pretty hacky way to slow down the rapidfire scrolling...
+        stepCount ++;
+        if (!axisDown) {
+            stepCount = 0;
+        }
+        if (stepCount % 8 != 0) {
+            window.requestAnimationFrame(inputLoop);
+            return;
+	}
+
         var gamepads = navigator.getGamepads();
         for (var playerIndex = 0; playerIndex < gamepads.length; playerIndex++) {
             if(!document.hasFocus()) break;
@@ -111,7 +126,7 @@ angular.module('arcadeCabinet', [])
                     $scope.$broadcast('right');
                     axisDown = true;
                 }
-                if(gamepad.axes[0] <= -0.9 && !axisDown) {
+                else if(gamepad.axes[0] <= -0.9 && !axisDown) {
                     $scope.$broadcast('left');
                     axisDown = true;
                 }
@@ -126,15 +141,16 @@ angular.module('arcadeCabinet', [])
                 else if(Math.abs(gamepad.axes[0]) < 0.9 && Math.abs(gamepad.axes[1]) < 0.9) {
                     axisDown = false;
                 }
-                if(gamepad.buttons[0].pressed == true && !buttonDown) {
+
+                if(gamepad.buttons[1].pressed == true && !buttonDown) {
                     $scope.$broadcast('select');
                     buttonDown = true;
                 }
-                else if(gamepad.buttons[1].pressed == true && !buttonDown) {
+                else if(gamepad.buttons[2].pressed == true && !buttonDown) {
                     $scope.$broadcast('back');
                     buttonDown = true;
                 }
-                else if(gamepad.buttons[0].pressed == false && gamepad.buttons[1].pressed == false) {
+                else if(gamepad.buttons[1].pressed == false && gamepad.buttons[2].pressed == false) {
                     buttonDown = false;
                 }
             }
@@ -156,20 +172,8 @@ angular.module('arcadeCabinet', [])
         }
     });
 
-    $scope.$on('right', function (e) { select(1); });
-    $scope.$on('left', function (e) { select(-1); });
-    $scope.$on('select', function (e) {
-        if (selectCooldown == 0) {
-            confirmSound.play();
-            selectCooldown = 1;
-            $scope.$apply();
-            window.setTimeout(function() {
-                selectCooldown = 0;
-                $scope.$apply();
-            }, 2000);
-            gameDiv.getElementsByClassName("game")[$scope.mod($scope.selectedGame, gameDiv.children.length)].children[0].click();
-        }
-    });
-    $scope.$on('back', function (e) { console.log("back"); });
+    $scope.$on('right' , function (e) { move(1); });
+    $scope.$on('left'  , function (e) { move(-1); });
+    $scope.$on('select', function (e) { select() });
+    $scope.$on('back'  , function (e) { console.log("back"); });
 });
-

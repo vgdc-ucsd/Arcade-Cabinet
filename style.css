@@ -67,3 +67,9 @@ header {
 header h2 {
     font-size: 0.9em;
 }
+header img {
+    display: block;
+    height: 150px;
+    margin: 0 auto;
+}
+
