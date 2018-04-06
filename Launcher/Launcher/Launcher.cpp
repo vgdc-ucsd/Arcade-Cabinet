@@ -10,7 +10,8 @@ std::string unescape(std::string str)
             str.replace(pos, 3, replace);
         }
     }
-    return str.substr(5);
+	// Strip "vgdcgame:" URI scheme.
+    return str.substr(9);
 }
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow)

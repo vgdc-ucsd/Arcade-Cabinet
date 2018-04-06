@@ -1,0 +1,1 @@
+Cooldown after choosing a game so that you can't launch multiple instances by spamming confirm.

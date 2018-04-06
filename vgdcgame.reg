@@ -1,0 +1,12 @@
+REGEDIT4
+
+[HKEY_CLASSES_ROOT\vgdcgame]
+@="URL:vgdcgame Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\vgdcgame\shell]
+
+[HKEY_CLASSES_ROOT\vgdcgame\shell\open]
+
+[HKEY_CLASSES_ROOT\vgdcgame\shell\open\command]
+@="\"C:\\Cabinet\\Launcher\\Debug\\Launcher.exe\" \"%1\"" 

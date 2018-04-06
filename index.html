@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="arcadeCabinet">
   <head>
+    <meta charset="UTF-8"> 
+    <title>Cabinet</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="angular.min.js"></script>
     <script src="main.js"></script>
@@ -13,11 +15,11 @@
     <div id="container">
       <div id="games" ng-style="{transform : transform}">
         <div ng-repeat="game in games" class="game" ng-class="{'selected' : mod(selectedGame) == $index}" ng-style="{transform : getTransform($index)}">
-          <a href="game:Games\\{{game.Name}}\\{{game.Command}}">
-            <h2 class="title">{{game.name}}</h2>
-            <img src="Games/{{game.Name}}/{{game.Image}}"/>
-            <h3>By: {{game.Authors}}</h3>
+          <a href="vgdcgame:{{game.Command}}">
+            <!--<h2 class="title">{{game.Name}}</h2>-->
+            <img src="Games/{{game.Name}}/thumbnail.png"/>
             <p class="description">{{game.Description}}</p>
+            <h3 class="authors">By: {{game.Authors}}</h3>
           </a>
         </div>
       </div>
