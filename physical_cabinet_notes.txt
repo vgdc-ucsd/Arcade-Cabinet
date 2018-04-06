@@ -1,0 +1,4 @@
+- If the controllers aren't working, run "Set up USB game controllers" to verify if they show up or not. Ensure both ends of the USB cables are plugged in, and try unplugging/replugging them.
+- Press F11 to toggle Firefox fullscreen.
+- There's a flash drive somewhere in the cabient for transferring files to the computer (games, installers, etc).
+- You can adjust the volume via keyboard shortcuts

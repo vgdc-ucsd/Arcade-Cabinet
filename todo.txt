@@ -1,1 +1,2 @@
 Cooldown after choosing a game so that you can't launch multiple instances by spamming confirm.
+When focus is regained, if start is already held, don't re-launch the game

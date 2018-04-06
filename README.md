@@ -1,6 +1,6 @@
 # Arcade-Cabinet
 
-The launcher software for the VGDC arcade cabinet project.
+The launcher software for the VGDC arcade cabinet project. Made by Jeff and touched up/installed by Patrick.
 
 It looks like the easiest way to launch native applications from a web browser is to just use a custom URI scheme. The solution that is used here just has a small bootstrap program that just runs whatever it is given as an argument (ex "vgdcgame:mygame.exe --fullscreen" would execute "mygame.exe --fullscreen").
 
@@ -13,7 +13,12 @@ Below setup is for Firefox, but should be similar if you want to test with anoth
 4. Open Firefox. In about:config change security.fileuri.strict_origin_policy to false if you are not serving the files through a web server so that ajax works
 5. Load the page and open one of the links
 6. When prompted to launch an application, DON'T select the Launcher.exe in the list; instead hit "Choose" and pick the Launcher.exe in the folder. Make sure "Remember my choice" is checked and click "Open link".
-7. You should be good to go! F11 puts Firefox in fullscreen.
+7. You should be good to go! F11 toggles Firefox fullscreen. You can install the Auto Fullscreen extension listed below.
+
+## Other setup notes
+
+- I compiled Launcher in Release Win32, and had to install Visual Studio Redistributable 2017 x86, and that worked.
+- If you want to change which Launcher.exe Firefox opens (for whatever reason), then rename the current Launcher.exe to something else, then it'll give you the prompt above again.
 
 ## Adding games
 
@@ -42,3 +47,9 @@ Game.json format: (note the use of `\\\\` in paths)
 [Register protocol - MozillaZine Knowledge Base](http://kb.mozillazine.org/Register_protocol)
 
 [Caleb Faith's GUI Button SFX Pack](https://www.assetstore.unity3d.com/en/#!/content/22259)
+
+[Firefox Auto Fullscreen Extension](https://addons.mozilla.org/en-US/firefox/addon/autofullscreen/)
+
+[Flash Player Projector (standalone player for Flash games) (search for the DL link)](https://www.adobe.com/support/flashplayer/debug_downloads.html)
+
+[AutoHotKey](https://www.autohotkey.com/download/)
