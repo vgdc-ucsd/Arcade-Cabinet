@@ -68,20 +68,45 @@ angular.module('arcadeCabinet', [])
             }
         }
     }
+    
+    function setLaunchingText(text) {
+        document.getElementById("launching-text").innerHTML = text;
+    }
+    
+    var numLaunchWaitCycles = 0;
+    var maxLaunchWaitCycles = 10;
+    var launchWaitCycleTime = 1000;
+    
+    function launchWaitCycle() {
+        numLaunchWaitCycles ++;
+        
+        if (numLaunchWaitCycles > maxLaunchWaitCycles) {
+            selectCooldown = 0;
+            setLaunchingText("");
+        } else {
+            var str = "Launching";
+            for (var i=0; i<numLaunchWaitCycles-1; i++) {
+                str += ".";
+            }
+            setLaunchingText(str);
+            
+            window.setTimeout(launchWaitCycle, launchWaitCycleTime);
+        }
+        $scope.$apply();
+    }
 
     function select() {
         if (!selectCooldown) {
-            gameDiv.getElementsByClassName("game")[$scope.mod($scope.selectedGame, gameDiv.children.length)].children[0].click();
-
             confirmSound.play();
 
             selectCooldown = true;
             $scope.$apply();
 
-            window.setTimeout(function() {
-                selectCooldown = 0;
-                $scope.$apply();
-            }, 2000);
+            numLaunchWaitCycles = 0;
+            launchWaitCycle();
+
+            gameDiv.getElementsByClassName("game")[$scope.mod($scope.selectedGame, gameDiv.children.length)].children[0].click();
+
         }
     }
 
@@ -102,61 +127,65 @@ angular.module('arcadeCabinet', [])
         return "rotateY(" + rotateY + "deg) translateZ(" + z + "px)";
     }
 
-    var axisDown = false;
-    var buttonDown = false;
-    var stepCount = 0;
+    var rightLast = false;
+    var leftLast = false;
+    var selectLast = false;
 
     function inputLoop() {
-        // Pretty hacky way to slow down the rapidfire scrolling...
-        stepCount ++;
-        if (!axisDown) {
-            stepCount = 0;
-        }
-        if (stepCount % 8 != 0) {
+        if (!document.hasFocus()) {
+            rightLast = false;
+            leftLast = false;
+            selectLast = true; // True so if the select button is held as the
+            // browser regains focus, we don't immediately launch a game.
             window.requestAnimationFrame(inputLoop);
             return;
-	}
+        }
+
+        var right = false;
+        var left = false;
+        var select = false;
 
         var gamepads = navigator.getGamepads();
-        for (var playerIndex = 0; playerIndex < gamepads.length; playerIndex++) {
-            if(!document.hasFocus()) break;
-            var gamepad = gamepads[playerIndex];
-            if (gamepad) {
-                if(gamepad.axes[0] >= 0.9 && !axisDown) {
-                    $scope.$broadcast('right');
-                    axisDown = true;
-                }
-                else if(gamepad.axes[0] <= -0.9 && !axisDown) {
-                    $scope.$broadcast('left');
-                    axisDown = true;
-                }
-                else if(gamepad.axes[1] >= 0.9 && !axisDown) {
-                    $scope.$broadcast('down');
-                    axisDown = true;
-                }
-                else if(gamepad.axes[1] <= -0.9 && !axisDown) {
-                    $scope.$broadcast('up');
-                    axisDown = true;
-                }
-                else if(Math.abs(gamepad.axes[0]) < 0.9 && Math.abs(gamepad.axes[1]) < 0.9) {
-                    axisDown = false;
-                }
+        for (var i = 0; i < gamepads.length; i++) {
+            var gamepad = gamepads[i];
+            if (!gamepad) {
+                continue;
+            }
 
-                if(gamepad.buttons[1].pressed == true && !buttonDown) {
-                    $scope.$broadcast('select');
-                    buttonDown = true;
-                }
-                else if(gamepad.buttons[2].pressed == true && !buttonDown) {
-                    $scope.$broadcast('back');
-                    buttonDown = true;
-                }
-                else if(gamepad.buttons[1].pressed == false && gamepad.buttons[2].pressed == false) {
-                    buttonDown = false;
-                }
+            var deadZone = 0.9;
+
+            if (gamepad.axes[0] >= deadZone) {
+                right = true;
+            } else if (gamepad.axes[0] <= -deadZone) {
+                left = true;
+            }
+
+            //else if(Math.abs(gamepad.axes[0]) < deadZone && Math.abs(gamepad.axes[1]) < deadZone) {
+            //    axisDown = false;
+            //}
+
+            if (gamepad.buttons[1].pressed) {
+                select = true;
             }
         }
+
+        if (right && !rightLast) {
+            $scope.$broadcast('right');
+        } else if (left && !leftLast) {
+            $scope.$broadcast('left');
+        }
+
+        if (select && !selectLast) {
+            $scope.$broadcast('select');
+        }
+
+        rightLast = right;
+        leftLast = left;
+        selectLast = select;
+
         window.requestAnimationFrame(inputLoop);
     }
+
     inputLoop();
 
     // Keyboard controls for testing purposes.

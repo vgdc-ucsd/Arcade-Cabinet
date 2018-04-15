@@ -72,4 +72,11 @@ header img {
     height: 150px;
     margin: 0 auto;
 }
+#launching-text {
+    position:absolute;
+    left:20px;
+    top:20px;
+    color:#EEE;
+    font-size: 2em;
+}
 
