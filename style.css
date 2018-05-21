@@ -47,6 +47,10 @@ a {
     max-height:70%;
 }
 
+.game .gamename {
+    font-size: 2em;
+}
+
 .game .description {
     font-size: 2em;
 }

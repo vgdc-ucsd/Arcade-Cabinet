@@ -19,6 +19,7 @@
         <div ng-repeat="game in games" class="game" ng-class="{'selected' : mod(selectedGame) == $index}" ng-style="{transform : getTransform($index)}">
           <a href="vgdcgame:{{game.Command}}">
             <img src="Games/{{game.Name}}/thumbnail.png"/>
+            <h3 class="gamename">{{game.Name}}</h3>
             <p class="description">{{game.Description}}</p>
             <h3 class="authors">By: {{game.Authors}}</h3>
           </a>
