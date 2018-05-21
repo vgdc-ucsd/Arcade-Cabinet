@@ -38,13 +38,14 @@ angular.module('arcadeCabinet', [])
 .controller('arcadeCtrl', function($scope, $http) {
     $scope.selectedGame = 0;
     $scope.games = [];
-
-    var gameNames = ["Colors", "Panda", "Distilled"];
-
-    gameNames.forEach(function(name) {
-        $http.get("Games/" + name + "/Game.json")
-        .success(function(data) {
-            $scope.games.push(data);
+    
+    $http.get("Games/Games.json")
+    .success(function(data) {        
+        data.forEach(function(name) {
+            $http.get("Games/" + name + "/Game.json")
+            .success(function(data) {
+                $scope.games.push(data);
+            });
         });
     });
 
