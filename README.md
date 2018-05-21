@@ -26,12 +26,15 @@ Each game has its own directory in the Games directory:
 ```
 index.html
 Games/
+    Games.json
     Game1/
         Game.json       <- format shown below
         thumbnail.png   <- 16:9 aspect ratio
     Game2/
         ...
 ```
+Add a line in Games.json with the name of the new directory.
+
 Game.json format: (note the use of `\\\\` in paths)
 ```
 {
