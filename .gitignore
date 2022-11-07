@@ -153,5 +153,8 @@ $RECYCLE.BIN/
 .DS_Store
 
 
-
-Games/
+# ignore game exes... except a couple?
+Games/*
+!Games/Games.json
+!Games/Input Testing/
+Games/Input Testing/InputTesting_BurstDebugInformation_DoNotShip
