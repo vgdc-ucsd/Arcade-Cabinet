@@ -165,7 +165,8 @@ angular.module('arcadeCabinet', [])
             //    axisDown = false;
             //}
 
-            if (gamepad.buttons[1].pressed) {
+            //if (gamepad.buttons[1].pressed) { // green button
+            if (gamepad.buttons[9].pressed) { // start button
                 select = true;
             }
         }
