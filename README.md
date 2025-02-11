@@ -1,13 +1,13 @@
 # Arcade-Cabinet
 
-The launcher software for the VGDC arcade cabinet project. Made by Jeff and touched up/installed by Patrick.
+The launcher software for the VGDC arcade cabinet project. Made by Jeff and touched up/installed by Patrick. Updated 2025
 
 It looks like the easiest way to launch native applications from a web browser is to just use a custom URI scheme. The solution that is used here just has a small bootstrap program that just runs whatever it is given as an argument (ex "vgdcgame:mygame.exe --fullscreen" would execute "mygame.exe --fullscreen").
 
 ## Setup
 
-1. Build the solution in the Launcher directory.
-2. Edit vgdcgame.reg so the path points to the created `Launcher/Debug/Launcher.exe`. Be sure to preserve the format with the slashes and quotes.
+1. Build the solution in the Launcher2 directory by running `build.bat`.
+2. Edit vgdcgame.reg so the path points to the created `Launcher2/Launcher.exe`. Be sure to preserve the format with the slashes and quotes.
 3. Run vgdcgame.reg.
 Below setup is for Firefox, but should be similar if you want to test with another browser.
 4. Open Firefox. In about:config change security.fileuri.strict_origin_policy to false if you are not serving the files through a web server so that ajax works
@@ -16,8 +16,6 @@ Below setup is for Firefox, but should be similar if you want to test with anoth
 7. You should be good to go! F11 toggles Firefox fullscreen. You can install the Auto Fullscreen extension listed below.
 
 ## Other setup notes
-
-- I compiled Launcher in Release Win32, and had to install Visual Studio Redistributable 2017 x86, and that worked.
 - If you want to change which Launcher.exe Firefox opens (for whatever reason), then rename the current Launcher.exe to something else, then it'll give you the prompt above again.
 
 ## Adding games

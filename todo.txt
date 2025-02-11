@@ -1,2 +1,5 @@
-Cooldown after choosing a game so that you can't launch multiple instances by spamming confirm.
-When focus is regained, if start is already held, don't re-launch the game
+Compile documentation
+https://docs.google.com/document/d/1KSHJwEQ1HtYHJlHg0FOCGUWxg5ihWQbz/edit
+https://docs.google.com/document/d/1KwyBpNPkVLz8Gpp2mlgXeqHNfgmHX1oj/edit
+
+Make sure exiting game works
