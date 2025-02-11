@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Omelettes",
+    "thumbnail": "/games/pictures/omelettes.png",
+    "description": "Break some eggs.",
+    "creators": "Steven J. Miller",
+    "command": "C:\\Users\\VGDC\\Omelettes.exe (REPLACE THIS)"
+  },
+  {
+    "name": "Spellthief",
+    "thumbnail": "/games/pictures/spellthief.png",
+    "description": "A Halloween adventure.",
+    "creators": "Nick Droppa, Chase Peterson, Trey Shneour,\nNick Petrone, and James Villareal",
+    "command": "C:\\Users\\VGDC\\Spellthief.exe (REPLACE THIS)"
+  }
+]
