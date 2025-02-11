@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+<!-- Defines AngularJS app "arcadeCabinet". -->
+<!-- IMPORTANT! THIS IS NOT THE ANGULAR YOU KNOW. IT IS ANCIENT TECHNOLOGY. -->
 <html ng-app="arcadeCabinet">
+  <!-- Basic metadata, includes stylesheet and adds AngularJS. -->
   <head>
-    <meta charset="UTF-8"> 
-    <title>Cabinet</title>
-	<link rel="stylesheet" type="text/css" href="open-sans.css" />
+    <meta charset="UTF-8" />
+    <title>VGDC Arcade Cabinet</title>
+    <link rel="stylesheet" type="text/css" href="open-sans.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="angular.min.js"></script>
     <script src="main.js"></script>
@@ -11,15 +14,26 @@
   <body ng-controller="arcadeCtrl">
     <div id="launching-text"></div>
     <header>
-      <img src="assets/logo2022.png"/>
-      <h1>Arcade Machine</h1>
-      <h2>Games made by VGDC members!<br>Join us at <em>vgdc.dev</em></h2>
+      <img src="assets/logo2022.png" />
+      <h1>
+        <a
+          href="vgdcgame:C:\Users\chase_onrf9ju\Desktop\School\Student Orgs\VGDC\Tech Committee\Arcade-Cabinet\Games\Omelettes\Omelettes Eggstended.exe"
+          target="_blank"
+          >Arcade Machine</a
+        >
+      </h1>
+      <h2>Games made by VGDC members!<br />Join us at <em>vgdc.dev</em></h2>
     </header>
     <div id="container">
       <div id="games" ng-style="{transform : transform}">
-        <div ng-repeat="game in games" class="game" ng-class="{'selected' : mod(selectedGame) == $index}" ng-style="{transform : getTransform($index)}">
+        <div
+          ng-repeat="game in games"
+          class="game"
+          ng-class="{'selected' : mod(selectedGame) == $index}"
+          ng-style="{transform : getTransform($index)}"
+        >
           <a href="vgdcgame:{{game.Command}}">
-            <img src="Games/{{game.Name}}/thumbnail.png"/>
+            <img src="Games/{{game.Name}}/thumbnail.png" />
             <h3 class="gamename">{{game.Name}}</h3>
             <p class="description">{{game.Description}}</p>
             <h3 class="authors">By: {{game.Authors}}</h3>
