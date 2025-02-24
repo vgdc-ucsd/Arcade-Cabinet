@@ -158,22 +158,41 @@ function App() {
 
       if (!gp) continue;
 
-      inputs = {
-        a: gp.buttons[0].pressed || inputs.a,
-        b: gp.buttons[1].pressed || inputs.b,
-        x: gp.buttons[2].pressed || inputs.x,
-        y: gp.buttons[3].pressed || inputs.y,
-        dpad_up: gp.buttons[12].pressed || inputs.dpad_up,
-        dpad_down: gp.buttons[13].pressed || inputs.dpad_down,
-        dpad_left: gp.buttons[14].pressed || inputs.dpad_left,
-        dpad_right: gp.buttons[15].pressed || inputs.dpad_right,
-        stick_up: gp.axes[1] < -0.8 || inputs.stick_up,
-        stick_down: gp.axes[1] > 0.8 || inputs.stick_down,
-        stick_left: gp.axes[0] < -0.8 || inputs.stick_left,
-        stick_right: gp.axes[0] > 0.8 || inputs.stick_right,
-        select: gp.buttons[8].pressed || inputs.select,
-        start: gp.buttons[9].pressed || inputs.start,
-      };
+      if (gp.buttons.length > 12) {
+        inputs = {
+          a: gp.buttons[0].pressed || inputs.a,
+          b: gp.buttons[1].pressed || inputs.b,
+          x: gp.buttons[2].pressed || inputs.x,
+          y: gp.buttons[3].pressed || inputs.y,
+          dpad_up: gp.buttons[12].pressed || inputs.dpad_up,
+          dpad_down: gp.buttons[13].pressed || inputs.dpad_down,
+          dpad_left: gp.buttons[14].pressed || inputs.dpad_left,
+          dpad_right: gp.buttons[15].pressed || inputs.dpad_right,
+          stick_up: gp.axes[1] < -0.8 || inputs.stick_up,
+          stick_down: gp.axes[1] > 0.8 || inputs.stick_down,
+          stick_left: gp.axes[0] < -0.8 || inputs.stick_left,
+          stick_right: gp.axes[0] > 0.8 || inputs.stick_right,
+          select: gp.buttons[8].pressed || inputs.select,
+          start: gp.buttons[9].pressed || inputs.start,
+        };
+      } else {
+        inputs = {
+          a: gp.buttons[0].pressed || inputs.a,
+          b: gp.buttons[1].pressed || inputs.b,
+          x: gp.buttons[2].pressed || inputs.x,
+          y: gp.buttons[3].pressed || inputs.y,
+          dpad_up: false,
+          dpad_down: false,
+          dpad_left: false,
+          dpad_right: false,
+          stick_up: gp.axes[1] < -0.8 || inputs.stick_up,
+          stick_down: gp.axes[1] > 0.8 || inputs.stick_down,
+          stick_left: gp.axes[0] < -0.8 || inputs.stick_left,
+          stick_right: gp.axes[0] > 0.8 || inputs.stick_right,
+          select: gp.buttons[8].pressed || inputs.select,
+          start: gp.buttons[9].pressed || inputs.start,
+        };
+      }
     }
 
     setCurrentInput(inputs);
@@ -182,12 +201,10 @@ function App() {
   }
 
   window.addEventListener("gamepadconnected", () => {
-    console.log("connected");
     gameLoop();
   });
 
   window.addEventListener("gamepaddisconnected", () => {
-    console.log("disconnected");
     cancelAnimationFrame(start);
   });
 
