@@ -74,6 +74,7 @@ function App() {
   const [games, setGames] = useState<Game[]>([]);
   const [currentInput, setCurrentInput] = useState<GamepadInput>(BlankGamepad);
   const [lastInput, setLastInput] = useState<GamepadInput>(BlankGamepad);
+  const [launching, setLaunching] = useState("");
 
   const [playRightButton] = useSound(rightButtonSound);
   const [playLeftButton] = useSound(leftButtonSound);
@@ -93,6 +94,17 @@ function App() {
     playSelectButton();
     window.location.href =
       "vgdcgame:" + games[positiveModulo(index, games.length)].command;
+    // Launching text
+    setLaunching("Launching...");
+    const handleLaunch = (i: number) => {
+      if (i > 0) {
+        setLaunching((val) => val + ".");
+        setTimeout(() => handleLaunch(i - 1), 1000);
+      } else {
+        setLaunching("");
+      }
+    };
+    setTimeout(() => handleLaunch(7), 1000);
   };
 
   const handleKeyDown = (event: any) => {
@@ -185,6 +197,9 @@ function App() {
 
   return (
     <main className="bg-[#06050a] h-screen absolute w-screen text-white font-inter overflow-clip">
+      <div className="absolute top-6 left-4 text-white text-3xl font-inter animate-bounce">
+        {launching}
+      </div>
       <div className="absolute w-full h-fit top-[50%] -translate-y-[50%]">
         {/* Centerpiece */}
         <div className="w-128 mx-auto h-fit">
