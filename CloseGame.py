@@ -20,7 +20,8 @@ def close_window():
         try:
             process = psutil.Process(pid)
             print(f"Process Name: {process.name()}")
-            if (process.name() not in ("explorer.exe", "firefox.exe")):
+            if (process.name() not in ("explorer.exe", "firefox.exe", "chrome.exe")):
+                print(f"Killing process {process.name()}")
                 process.kill()
         except psutil.NoSuchProcess:
             print("Process no longer exists.")
