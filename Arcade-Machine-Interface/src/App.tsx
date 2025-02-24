@@ -14,6 +14,57 @@ type Game = {
   command: String;
 };
 
+type GamepadInput = {
+  a: boolean;
+  b: boolean;
+  x: boolean;
+  y: boolean;
+  dpad_up: boolean;
+  dpad_down: boolean;
+  dpad_left: boolean;
+  dpad_right: boolean;
+  stick_up: boolean;
+  stick_down: boolean;
+  stick_left: boolean;
+  stick_right: boolean;
+  select: boolean;
+  start: boolean;
+};
+
+const BlankGamepad: GamepadInput = {
+  a: false,
+  b: false,
+  x: false,
+  y: false,
+  dpad_up: false,
+  dpad_down: false,
+  dpad_left: false,
+  dpad_right: false,
+  stick_up: false,
+  stick_down: false,
+  stick_left: false,
+  stick_right: false,
+  select: false,
+  start: false,
+};
+
+const FullGamepad: GamepadInput = {
+  a: true,
+  b: true,
+  x: true,
+  y: true,
+  dpad_up: true,
+  dpad_down: true,
+  dpad_left: true,
+  dpad_right: true,
+  stick_up: true,
+  stick_down: true,
+  stick_left: true,
+  stick_right: true,
+  select: true,
+  start: true,
+};
+
 const positiveModulo = (val: number, mod: number) => {
   return ((val % mod) + mod) % mod;
 };
@@ -21,27 +72,46 @@ const positiveModulo = (val: number, mod: number) => {
 function App() {
   const [index, setIndex] = useState(0);
   const [games, setGames] = useState<Game[]>([]);
+  const [currentInput, setCurrentInput] = useState<GamepadInput>(BlankGamepad);
+  const [lastInput, setLastInput] = useState<GamepadInput>(BlankGamepad);
 
   const [playRightButton] = useSound(rightButtonSound);
   const [playLeftButton] = useSound(leftButtonSound);
   const [playSelectButton] = useSound(selectButtonSound);
 
-  const handleKeyDown = (event: any) => {
-    if (event.repeat) return;
-    if (event.key == "ArrowLeft") {
-      playLeftButton();
-      setIndex((i) => i - 1);
-    }
-    if (event.key == "ArrowRight") {
-      playRightButton();
-      setIndex((i) => i + 1);
-    }
-    if (event.key == "Enter") {
-      playSelectButton();
-      window.location.href =
-        "vgdcgame:" + games[positiveModulo(index, games.length)].command;
-    }
+  const handleLeft = () => {
+    playLeftButton();
+    setIndex((i) => i - 1);
   };
+
+  const handleRight = () => {
+    playRightButton();
+    setIndex((i) => i + 1);
+  };
+
+  const handleEnter = () => {
+    playSelectButton();
+    window.location.href =
+      "vgdcgame:" + games[positiveModulo(index, games.length)].command;
+  };
+
+  const handleKeyDown = (event: any) => {
+    console.log(event.key);
+    if (event.repeat) return;
+    if (event.key == "ArrowLeft") handleLeft();
+    if (event.key == "ArrowRight") handleRight();
+    if (event.key == "Enter") handleEnter();
+  };
+
+  useEffect(() => {
+    if (currentInput.a && !lastInput.a) handleEnter();
+    if (currentInput.start && !lastInput.start) handleEnter();
+    if (currentInput.stick_left && !lastInput.stick_left) handleLeft();
+    if (currentInput.stick_right && !lastInput.stick_right) handleRight();
+    if (currentInput.dpad_left && !lastInput.dpad_left) handleLeft();
+    if (currentInput.dpad_right && !lastInput.dpad_right) handleRight();
+    setLastInput(currentInput);
+  }, [currentInput]);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -55,6 +125,59 @@ function App() {
     const data = await response.json();
     if (data) setGames(data);
   };
+
+  let start: number;
+
+  function gameLoop() {
+    if (!document.hasFocus()) {
+      setLastInput(FullGamepad);
+      start = requestAnimationFrame(gameLoop);
+      return;
+    }
+
+    const gamepads = navigator.getGamepads();
+
+    if (!gamepads) return;
+
+    let inputs: GamepadInput = structuredClone(BlankGamepad);
+
+    for (let i = 0; i < gamepads.length; i++) {
+      let gp = gamepads[i];
+
+      if (!gp) continue;
+
+      inputs = {
+        a: gp.buttons[0].pressed || inputs.a,
+        b: gp.buttons[1].pressed || inputs.b,
+        x: gp.buttons[2].pressed || inputs.x,
+        y: gp.buttons[3].pressed || inputs.y,
+        dpad_up: gp.buttons[12].pressed || inputs.dpad_up,
+        dpad_down: gp.buttons[13].pressed || inputs.dpad_down,
+        dpad_left: gp.buttons[14].pressed || inputs.dpad_left,
+        dpad_right: gp.buttons[15].pressed || inputs.dpad_right,
+        stick_up: gp.axes[1] < -0.8 || inputs.stick_up,
+        stick_down: gp.axes[1] > 0.8 || inputs.stick_down,
+        stick_left: gp.axes[0] < -0.8 || inputs.stick_left,
+        stick_right: gp.axes[0] > 0.8 || inputs.stick_right,
+        select: gp.buttons[8].pressed || inputs.select,
+        start: gp.buttons[9].pressed || inputs.start,
+      };
+    }
+
+    setCurrentInput(inputs);
+
+    start = requestAnimationFrame(gameLoop);
+  }
+
+  window.addEventListener("gamepadconnected", () => {
+    console.log("connected");
+    gameLoop();
+  });
+
+  window.addEventListener("gamepaddisconnected", () => {
+    console.log("disconnected");
+    cancelAnimationFrame(start);
+  });
 
   useEffect(() => {
     getGames();
