@@ -1,5 +1,0 @@
-Compile documentation
-https://docs.google.com/document/d/1KSHJwEQ1HtYHJlHg0FOCGUWxg5ihWQbz/edit
-https://docs.google.com/document/d/1KwyBpNPkVLz8Gpp2mlgXeqHNfgmHX1oj/edit
-
-Make sure exiting game works

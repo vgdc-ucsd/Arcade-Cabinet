@@ -1,9 +1,0 @@
-- If the joysticks/buttons aren't working, try unplugging and re-plugging the 2 USB cords, both the ends in the computer and the ends underneath the panel. You can run "Set up USB game controllers" to verify they're showing up.
-
-- Various AutoHotKey scripts get started and stopped automatically. You can see them in the lower right of the taskbar, and right click -> Exit to stop them.
-
-- There's a black flash drive somewhere in the cabient for transferring files to the computer (games, installers, etc).
-
-- Fn-F2 and Fn-F3 (shorcuts listed on the keyboard) to adjust volume
-
-- F11 to toggle Firefox fullscreen
