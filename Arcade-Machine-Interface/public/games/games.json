@@ -1,16 +1,164 @@
 [
   {
+    "name": "Contract Killer",
+    "thumbnail": "/games/pictures/contract-killer.png",
+    "description": "[2P+] Co-op beat 'em up",
+    "creators": "Paperboy Games",
+    "command": "C:\\link\\to\\games\\Contract Killer\\Contract Killer.exe",
+    "year": "2022",
+    "active": true
+  },
+  {
+    "name": "HYPERFIGHT",
+    "thumbnail": "/games/pictures/hyperfight.png",
+    "description": "[2P] 3 attacks, 1-hit KOs, lightining-fast duels",
+    "creators": "Justin Oh",
+    "command": "C:\\link\\to\\games\\HYPERFIGHT\\HYPERFIGHT.exe",
+    "year": "2019",
+    "active": true
+  },
+  {
+    "name": "2P Co-op Game",
+    "thumbnail": "/games/pictures/2p-coop-game.png",
+    "description": "[2P] Work together to navigate challenging platforming puzzles",
+    "creators": "Dylan Govic, Adam Beck",
+    "command": "C:\\link\\to\\games\\2 P Coop Game\\Brackeys Jam 2022.exe",
+    "year": "2022",
+    "active": true
+  },
+  {
+    "name": "Ninja Fever",
+    "thumbnail": "/games/pictures/ninja-fever.png",
+    "description": "[2P] Fast-paced arcade platformer inspired by Super Crate Box",
+    "creators": "Tim Wang",
+    "command": "C:\\link\\to\\games\\Ninja Fever\\vgdcFallGameJam.exe",
+    "year": "2016",
+    "active": false
+  },
+  {
+    "name": "Boxes",
+    "thumbnail": "/games/pictures/boxes.png",
+    "description": "[2P] Co-op assembly line inspired by Overcooked",
+    "creators": "Patrick Traynor",
+    "command": "C:\\link\\to\\games\\Boxes\\boxes.exe",
+    "year": "2018",
+    "active": true
+  },
+  {
+    "name": "Evil Incarnate",
+    "thumbnail": "/games/pictures/evil-incarnate.png",
+    "description": "[1P] A horror game.",
+    "creators": "Ethan Schwartzman, Kevin Tang,\nAnnie Wong, and Zee Avila",
+    "command": "C:\\link\\to\\games\\Evil Incarnate\\VGDC-Project.exe",
+    "year": "2023",
+    "active": true
+  },
+  {
+    "name": "pubert",
+    "thumbnail": "/games/pictures/pubert.png",
+    "description": "[1P] Restore color to a forgotten land!",
+    "creators": "Dylan Govic, Marcus Kry, David Liu, Louis Zimmerer",
+    "command": "C:\\link\\to\\games\\pubert\\UCSD Combination.exe",
+    "year": "2022",
+    "active": true
+  },
+  {
+    "name": "TAKYON",
+    "thumbnail": "/games/pictures/takyon.png",
+    "creators": "Dylan Govic, David Liu, Jose Valdivia",
+    "description": "[1P] PARTICLE EXPERIMENT TO DISCOVER MAXIMUM C VALUE - JUN 5, 1985",
+    "command": "C:\\link\\to\\games\\TAKYON\\Science CCGJ.exe",
+    "year": "2022",
+    "active": true
+  },
+  {
+    "name": "norbert the pumpkin",
+    "thumbnail": "/games/pictures/norbert-the-pumpkin.png",
+    "creators": "Dylan Govic, Jose Valdivia, Adam Beck",
+    "description": "[1P] Help Norbert collect all of the candy corn!",
+    "command": "C:\\link\\to\\games\\norbert the pumpkin\\UCSDTrickOrTreat.exe",
+    "year": "2022",
+    "active": true
+  },
+  {
+    "name": "Don't Space Out",
+    "thumbnail": "/games/pictures/dont-space-out.png",
+    "description": "[1P] A fast-paced bullet hell/shoot 'em up game where you fly a spaceship and solve puzzles.",
+    "creators": "Ethan Schwartzman, Annie Wong, Breanna Lau,\nJacky Mei, Zee Avila, and Kevin Tang",
+    "command": "C:\\link\\to\\games\\Don't Space Out\\Tritonware-Spring-2024.exe",
+    "year": "2024",
+    "active": true
+  },
+  {
+    "name": "Unit 108",
+    "thumbnail": "/games/pictures/unit-108.png",
+    "description": "[1P] 2D Action Platformer with a cyborg",
+    "creators": "LS Studios",
+    "command": "C:\\link\\to\\games\\Unit 108\\Unit 108.exe",
+    "year": "2019",
+    "active": false
+  },
+  {
+    "name": "Chicken Odyssey",
+    "thumbnail": "/games/pictures/chicken-odyssey.png",
+    "description": "[1P] An infinite runner with chickens, wolves, and hats.",
+    "creators": "Alex Hawker",
+    "command": "C:\\link\\to\\games\\Chicken Odyssey\\chicken_odyssey.exe",
+    "year": "2016",
+    "active": false
+  },
+  {
+    "name": "Patrick's Parabox (Pre-Release)",
+    "thumbnail": "/games/pictures/parabox.png",
+    "description": "[1P] Explore recursion by pushing boxes inside of boxes.",
+    "creators": "Patrick Traynor",
+    "command": "C:\\link\\to\\games\\Patrick's Parabox\\Patrick's Parabox.exe",
+    "year": "2019",
+    "active": true
+  },
+  {
+    "name": "Predetermined",
+    "thumbnail": "/games/pictures/predetermined.png",
+    "description": "[1P] Push boxes. Solve puzzles. Repeat.",
+    "creators": "Steven Miller",
+    "command": "C:\\link\\to\\games\\Predetermined\\Predetermined.exe",
+    "year": "2018",
+    "active": true
+  },
+  {
     "name": "Omelettes",
     "thumbnail": "/games/pictures/omelettes.png",
-    "description": "Break some eggs.",
-    "creators": "Steven J. Miller",
-    "command": "C:\\Users\\VGDC\\Omelettes.exe (REPLACE THIS)"
+    "description": "[1P] A puzzle game about breaking a few eggs.",
+    "creators": "Steven Miller",
+    "command": "C:\\link\\to\\games\\Omelettes\\Omelettes.exe",
+    "year": "2019",
+    "active": true
+  },
+  {
+    "name": "Colors",
+    "thumbnail": "/games/pictures/colors.png",
+    "description": "[1P] Colorful pixel toy.",
+    "creators": "Patrick Traynor",
+    "command": "C:\\link\\to\\games\\Colors\\Colors.exe",
+    "year": "2018",
+    "active": true
+  },
+  {
+    "name": "Panda",
+    "thumbnail": "/games/pictures/panda.png",
+    "description": "[1P] An immersive experience.",
+    "creators": "Patrick Traynor",
+    "command": "C:\\link\\to\\games\\Panda\\panda.exe",
+    "year": "2017",
+    "active": true
   },
   {
     "name": "Spellthief",
     "thumbnail": "/games/pictures/spellthief.png",
-    "description": "A Halloween adventure.",
+    "description": "[1P] A Halloween-themed bullet hell adventure.",
     "creators": "Nick Droppa, Chase Peterson, Trey Shneour,\nNick Petrone, and James Villareal",
-    "command": "C:\\Users\\VGDC\\Spellthief.exe (REPLACE THIS)"
+    "command": "C:\\link\\to\\games\\Spellthief\\Spellthief (Arcade).exe",
+    "year": "2023",
+    "active": true
   }
 ]
