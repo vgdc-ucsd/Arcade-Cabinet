@@ -12,6 +12,8 @@ type Game = {
   description: String;
   creators: String;
   command: String;
+  year: String;
+  active: boolean;
 };
 
 type GamepadInput = {
@@ -135,7 +137,7 @@ function App() {
   const getGames = async () => {
     const response = await fetch("/games/games.json");
     const data = await response.json();
-    if (data) setGames(data);
+    if (data) setGames(data.filter((game: Game) => game.active));
   };
 
   let start: number;
@@ -251,11 +253,7 @@ function App() {
                 index={i}
                 currentPosition={index}
                 totalGames={games.length}
-                name={game.name}
-                description={game.description}
-                thumbnail={game.thumbnail}
-                creators={game.creators}
-                command={game.command}
+                game={game}
                 key={i}
               />
             ))}
@@ -266,16 +264,7 @@ function App() {
   );
 }
 
-function Game({
-  index,
-  currentPosition,
-  totalGames,
-  name,
-  thumbnail,
-  description,
-  creators,
-  command,
-}: any) {
+function Game({ index, currentPosition, totalGames, game }: any) {
   // Some fancy math to decide the rotation
   let z = Math.round(1000 / 2 / Math.tan(Math.PI / count));
 
@@ -288,16 +277,19 @@ function Game({
   return (
     <a
       id={`startgame:${index}`}
-      href={`vgdcgame:${command}`}
+      href={`vgdcgame:${game.command}`}
       style={{ transform: `rotateY(${rotateY}deg) translateZ(${z}px)` }}
-      className={`w-160 h-128 block absolute -translate-x-[50%] left-[50%] top-[5vh] transition-colors duration-300`}
+      className={`w-160 h-128 block absolute -translate-x-[50%] left-[50%] top-[5vh] transition-colors duration-300 backface-hidden`}
     >
-      <img src={thumbnail} className="w-full"></img>
+      <div className="absolute bg-[#50d0a1]/80 font-medium shadow-lg text-black px-1 rounded-md text-2xl top-3 left-3">
+        {game.year}
+      </div>
+      <img src={game.thumbnail} className="w-full"></img>
       <div className="w-full whitespace-pre-line">
-        <h2 className="text-center mt-6 text-2xl font-semibold">{name}</h2>
-        <h3 className="text-center text-xl">{description}</h3>
+        <h2 className="text-center mt-6 text-2xl font-semibold">{game.name}</h2>
+        <h3 className="text-center text-xl">{game.description}</h3>
         <h4 className="text-center text-base font-light leading-6 mt-2">
-          By {creators}
+          By {game.creators}
         </h4>
       </div>
     </a>
