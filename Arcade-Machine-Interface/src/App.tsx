@@ -292,8 +292,8 @@ function Game({
       style={{ transform: `rotateY(${rotateY}deg) translateZ(${z}px)` }}
       className={`w-160 h-128 block absolute -translate-x-[50%] left-[50%] top-[5vh] transition-colors duration-300`}
     >
-      <img src={thumbnail}></img>
-      <div className="whitespace-pre">
+      <img src={thumbnail} className="w-full"></img>
+      <div className="w-full whitespace-pre-line">
         <h2 className="text-center mt-6 text-2xl font-semibold">{name}</h2>
         <h3 className="text-center text-xl">{description}</h3>
         <h4 className="text-center text-base font-light leading-6 mt-2">
