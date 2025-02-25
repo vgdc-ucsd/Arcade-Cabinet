@@ -110,7 +110,6 @@ function App() {
   };
 
   const handleKeyDown = (event: any) => {
-    console.log(event.key);
     if (event.repeat) return;
     if (event.key == "ArrowLeft") handleLeft();
     if (event.key == "ArrowRight") handleRight();
