@@ -93,6 +93,8 @@ function App() {
   };
 
   const handleEnter = () => {
+	if (games.length == 0) return;
+  
     playSelectButton();
     window.location.href =
       "vgdcgame:" + games[positiveModulo(index, games.length)].command;
@@ -159,7 +161,7 @@ function App() {
 
       if (!gp) continue;
 
-      if (gp.buttons.length > 12) {
+      if (gp.buttons.length > 13) {
         inputs = {
           a: gp.buttons[0].pressed || inputs.a,
           b: gp.buttons[1].pressed || inputs.b,
@@ -280,9 +282,9 @@ function Game({ index, currentPosition, totalGames, game }: any) {
       style={{ transform: `rotateY(${rotateY}deg) translateZ(${z}px)` }}
       className={`w-160 h-128 block absolute -translate-x-[50%] left-[50%] top-[5vh] transition-colors duration-300 backface-hidden`}
     >
-      <div className="absolute bg-[#50d0a1]/80 font-medium shadow-lg text-black px-1 rounded-md text-2xl top-3 left-3">
+      {/* <div className="absolute bg-[#50d0a1]/80 font-medium shadow-lg text-black px-1 rounded-md text-2xl top-3 left-3">
         {game.year}
-      </div>
+      </div> */}
       <img src={game.thumbnail} className="w-full"></img>
       <div className="w-full whitespace-pre-line">
         <h2 className="text-center mt-6 text-2xl font-semibold">{game.name}</h2>

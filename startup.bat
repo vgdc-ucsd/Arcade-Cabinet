@@ -1,3 +1,3 @@
 PySetup.bat
-python CloseGame.py
+start python CloseGame.py
 RUN_INTERFACE.bat
