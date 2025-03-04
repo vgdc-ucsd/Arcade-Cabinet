@@ -93,8 +93,8 @@ function App() {
   };
 
   const handleEnter = () => {
-	if (games.length == 0) return;
-  
+    if (games.length == 0) return;
+
     playSelectButton();
     window.location.href =
       "vgdcgame:" + games[positiveModulo(index, games.length)].command;
@@ -203,16 +203,17 @@ function App() {
     start = requestAnimationFrame(gameLoop);
   }
 
-  window.addEventListener("gamepadconnected", () => {
-    gameLoop();
-  });
+  // window.addEventListener("gamepadconnected", () => {
+  //   gameLoop();
+  // });
 
-  window.addEventListener("gamepaddisconnected", () => {
-    cancelAnimationFrame(start);
-  });
+  // window.addEventListener("gamepaddisconnected", () => {
+  //   cancelAnimationFrame(start);
+  // });
 
   useEffect(() => {
     getGames();
+    requestAnimationFrame(gameLoop);
   }, []);
 
   return (
