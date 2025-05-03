@@ -6,7 +6,9 @@
     "creators": "Paperboy Games",
     "command": "C:\\Cabinet\\Games\\Contract Killer\\Contract Killer.exe",
     "year": "2022",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 0
   },
   {
     "name": "HYPERFIGHT",
@@ -15,7 +17,9 @@
     "creators": "Justin Oh",
     "command": "C:\\Cabinet\\Games\\HYPERFIGHT\\HYPERFIGHT.exe",
     "year": "2019",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 1
   },
   {
     "name": "2P Co-op Game",
@@ -24,7 +28,9 @@
     "creators": "Dylan Govic, Adam Beck",
     "command": "C:\\Cabinet\\Games\\2 P Coop Game\\Brackeys Jam 2022.exe",
     "year": "2022",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 2
   },
   {
     "name": "Ninja Fever",
@@ -33,7 +39,9 @@
     "creators": "Tim Wang",
     "command": "C:\\Cabinet\\Games\\Ninja Fever\\vgdcFallGameJam.exe",
     "year": "2016",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 3
   },
   {
     "name": "Boxes",
@@ -42,7 +50,9 @@
     "creators": "Patrick Traynor",
     "command": "C:\\Cabinet\\Games\\Boxes\\boxes.exe",
     "year": "2018",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 0
   },
   {
     "name": "Evil Incarnate",
@@ -51,7 +61,9 @@
     "creators": "Ethan Schwartzman, Kevin Tang,\nAnnie Wong, and Zee Avila",
     "command": "C:\\Cabinet\\Games\\Evil Incarnate\\VGDC-Project.exe",
     "year": "2023",
-    "active": true
+    "active": true,
+    "tier": 1,
+    "difficulty": 4
   },
   {
     "name": "pubert",
@@ -60,7 +72,9 @@
     "creators": "Dylan Govic, Marcus Kry, David Liu, Louis Zimmerer",
     "command": "C:\\Cabinet\\Games\\pubert\\UCSD Combination.exe",
     "year": "2022",
-    "active": true
+    "active": true,
+    "tier": 1,
+    "difficulty": 2
   },
   {
     "name": "TAKYON",
@@ -69,7 +83,9 @@
     "description": "[1P] PARTICLE EXPERIMENT TO DISCOVER MAXIMUM C VALUE - JUN 5, 1985",
     "command": "C:\\Cabinet\\Games\\TAKYON\\Science CCGJ.exe",
     "year": "2022",
-    "active": true
+    "active": true,
+    "tier": 1,
+    "difficulty": 3
   },
   {
     "name": "norbert the pumpkin",
@@ -78,7 +94,9 @@
     "description": "[1P] Help Norbert collect all of the candy corn!",
     "command": "C:\\Cabinet\\Games\\norbert the pumpkin\\UCSDTrickOrTreat.exe",
     "year": "2022",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 0
   },
   {
     "name": "Don't Space Out",
@@ -87,7 +105,9 @@
     "creators": "Ethan Schwartzman, Annie Wong, Breanna Lau,\nJacky Mei, Zee Avila, and Kevin Tang",
     "command": "C:\\Cabinet\\Games\\Don't Space Out\\Tritonware-Spring-2024.exe",
     "year": "2024",
-    "active": true
+    "active": true,
+    "tier": 1,
+    "difficulty": 0
   },
   {
     "name": "Unit 108",
@@ -96,7 +116,9 @@
     "creators": "LS Studios",
     "command": "C:\\Cabinet\\Games\\Unit 108\\Unit 108.exe",
     "year": "2019",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 0
   },
   {
     "name": "Chicken Odyssey",
@@ -105,7 +127,9 @@
     "creators": "Alex Hawker",
     "command": "C:\\Cabinet\\Games\\Chicken Odyssey\\chicken_odyssey.exe",
     "year": "2016",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 0
   },
   {
     "name": "Patrick's Parabox (Pre-Release)",
@@ -114,7 +138,9 @@
     "creators": "Patrick Traynor",
     "command": "C:\\Cabinet\\Games\\Patrick's Parabox\\Patrick's Parabox.exe",
     "year": "2019",
-    "active": true
+    "active": true,
+    "tier": 3,
+    "difficulty": 0
   },
   {
     "name": "Predetermined",
@@ -123,7 +149,9 @@
     "creators": "Steven Miller",
     "command": "C:\\Cabinet\\Games\\Predetermined\\Predetermined.exe",
     "year": "2018",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 0
   },
   {
     "name": "Omelettes",
@@ -132,7 +160,9 @@
     "creators": "Steven Miller",
     "command": "C:\\Cabinet\\Games\\Omelettes\\Omelettes.exe",
     "year": "2019",
-    "active": false
+    "active": false,
+    "tier": 1,
+    "difficulty": 0
   },
   {
     "name": "Colors",
@@ -141,7 +171,9 @@
     "creators": "Patrick Traynor",
     "command": "C:\\Cabinet\\Games\\Colors\\Colors.exe",
     "year": "2018",
-    "active": true
+    "active": true,
+    "tier": 1,
+    "difficulty": 0
   },
   {
     "name": "Panda",
@@ -150,7 +182,9 @@
     "creators": "Patrick Traynor",
     "command": "C:\\Cabinet\\Games\\Panda\\panda.exe",
     "year": "2017",
-    "active": true
+    "active": true,
+    "tier": 2,
+    "difficulty": 0
   },
   {
     "name": "Spellthief",
@@ -159,15 +193,118 @@
     "creators": "Nick Droppa, Chase Peterson, Trey Shneour,\nNick Petrone, and James Villareal",
     "command": "C:\\Cabinet\\Games\\Spellthief\\Spellthief (Arcade).exe",
     "year": "2023",
-    "active": true
+    "active": true,
+    "tier": 3,
+    "difficulty": 0
   },
   {
-	"name": "Bedtime Beats",
-	"thumbnail": "/games/pictures/bedtime-beats.png",
-	"description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-	"creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-	"command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-	"year": "2024",
-	"active": true
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 0
+  },
+  {
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 0
+  },
+  {
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 0
+  },
+  {
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 4
+  },
+  {
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 3
+  },
+  {
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 1
+  },
+  {
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 2
+  },
+  {
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 0
+  },
+  {
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 0
+  },
+  {
+    "name": "Bedtime Beats",
+    "thumbnail": "/games/pictures/bedtime-beats.png",
+    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+    "year": "2024",
+    "active": true,
+    "tier": 1,
+    "difficulty": 0
   }
 ]
