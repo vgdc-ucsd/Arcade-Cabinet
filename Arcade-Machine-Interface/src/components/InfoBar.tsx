@@ -5,9 +5,15 @@ type InfoBarProps = {
   gameName: string;
   date: string;
   difficulty: number;
+  gameCreators: string;
 };
 
-const InfoBar: React.FC<InfoBarProps> = ({ gameName, date, difficulty }) => {
+const InfoBar: React.FC<InfoBarProps> = ({
+  gameName,
+  date,
+  difficulty,
+  gameCreators,
+}) => {
   const renderSkulls = () => {
     const skulls = [];
     for (let i = 0; i < 5; i++) {
@@ -30,9 +36,14 @@ const InfoBar: React.FC<InfoBarProps> = ({ gameName, date, difficulty }) => {
           {/* Game Name */}
           <div className="w-[1000px] h-16 rounded-full bg-[#3A3F41]/50 flex items-center gap-4 px-6">
             <Users2 className="h-8 w-8 flex-shrink-0" />
-            <span className="text-white font-bold text-xl uppercase tracking-wider truncate">
-              {gameName}
-            </span>
+            <div className="flex flex-col -space-y-1">
+              <span className="text-white font-bold text-xl uppercase tracking-wider truncate">
+                {gameName}
+              </span>
+              <span className="text-gray-300 text-sm uppercase truncate">
+                {gameCreators}
+              </span>
+            </div>
           </div>
 
           {/* Date */}

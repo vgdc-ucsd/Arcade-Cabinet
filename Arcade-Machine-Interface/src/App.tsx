@@ -277,8 +277,9 @@ function App() {
           gameName={games[selectedIndex]?.name || "SELECT GAME"}
           date={games[selectedIndex]?.year || "----"}
           difficulty={games[selectedIndex]?.difficulty || 0}
+          gameCreators={games[selectedIndex]?.creators || "----"}
         />
-        <img src="./assets/VGDC-logo.png" className="w-36" />
+        {/* <img src="./assets/VGDC-logo.png" className="w-36" /> */}
       </div>
     </main>
   );
