@@ -6,6 +6,7 @@ import selectButtonSound from "/sounds/button_select.wav";
 import GameCard from "./components/GameCard";
 import InfoBar from "./components/InfoBar";
 import Loading from "./components/Loading";
+import { Dices, Plus } from "lucide-react";
 
 type Game = {
   name: string;
@@ -260,6 +261,10 @@ function App() {
 
   return (
     <main className="bg-[#06050A] h-screen w-screen text-white font-inter overflow-hiddem flex flex-col">
+      <div className="bg-gray-500/20 absolute rounded-full m-5 p-4 flex flex-col items-center gap-4 opacity-10 hover:opacity-100 transition-all">
+        <Dices size={24} className="text-gray-500 hover:text-white" />
+        <Plus size={24} className="text-gray-500 hover:text-white" />
+      </div>
       <Loading isVisible={launching} />
 
       {/* Game Grid */}
