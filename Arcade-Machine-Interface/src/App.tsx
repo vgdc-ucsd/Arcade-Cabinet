@@ -5,7 +5,7 @@ import leftButtonSound from "/sounds/button_left.wav";
 import selectButtonSound from "/sounds/button_select.wav";
 import GameCard from "./components/GameCard";
 import InfoBar from "./components/InfoBar";
-import { Diff } from "lucide-react";
+import Loading from "./components/Loading";
 
 type Game = {
   name: string;
@@ -75,7 +75,7 @@ function App() {
   const [games, setGames] = useState<Game[]>([]);
   const [currentInput, setCurrentInput] = useState<GamepadInput>(BlankGamepad);
   const [lastInput, setLastInput] = useState<GamepadInput>(BlankGamepad);
-  const [launching, setLaunching] = useState("");
+  const [launching, setLaunching] = useState(false);
 
   const [playRightButton] = useSound(rightButtonSound);
   const [playLeftButton] = useSound(leftButtonSound);
@@ -124,18 +124,27 @@ function App() {
     if (games.length == 0) return;
 
     playSelectButton();
-    window.location.href = "vgdcgame:" + games[selectedIndex].command;
-    // Launching text
-    setLaunching("Launching...");
-    const handleLaunch = (i: number) => {
-      if (i > 0) {
-        setLaunching((val) => val + ".");
-        setTimeout(() => handleLaunch(i - 1), 1000);
-      } else {
-        setLaunching("");
+    setLaunching(true);
+
+    // event listener for when window loses focus
+    const focusHandler = () => {
+      if (document.hidden) {
+        setTimeout(() => {
+          setLaunching(false);
+          document.removeEventListener("visibilitychange", focusHandler);
+          clearTimeout(fallbackTimer);
+        }, 500);
       }
     };
-    setTimeout(() => handleLaunch(7), 1000);
+    document.addEventListener("visibilitychange", focusHandler);
+
+    // cancel after 10 seconds
+    const fallbackTimer = setTimeout(() => {
+      setLaunching(false);
+      document.removeEventListener("visibilitychange", focusHandler);
+    }, 10000);
+
+    window.location.href = "vgdcgame:" + games[selectedIndex].command;
   };
 
   const handleKeyDown = (event: any) => {
@@ -251,9 +260,7 @@ function App() {
 
   return (
     <main className="bg-[#06050A] h-screen w-screen text-white font-inter overflow-hiddem flex flex-col">
-      <div className="absolute top-6 left-4 text-white text-3xl font-inter animate-bounce z-10">
-        {launching}
-      </div>
+      <Loading isVisible={launching} />
 
       {/* Game Grid */}
       <div className="h-[90%] p-12">
