@@ -133,7 +133,7 @@ function App() {
           setLaunching(false);
           document.removeEventListener("visibilitychange", focusHandler);
           clearTimeout(fallbackTimer);
-        }, 500);
+        }, 1000);
       }
     };
     document.addEventListener("visibilitychange", focusHandler);
