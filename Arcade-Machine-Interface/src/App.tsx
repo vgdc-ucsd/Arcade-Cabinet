@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useSound from "use-sound";
 import rightButtonSound from "/sounds/button_right.wav";
 import leftButtonSound from "/sounds/button_left.wav";
@@ -6,7 +6,7 @@ import selectButtonSound from "/sounds/button_select.wav";
 import GameCard from "./components/GameCard";
 import InfoBar from "./components/InfoBar";
 import Loading from "./components/Loading";
-import { Dices, Plus } from "lucide-react";
+import { Dices, Eye } from "lucide-react";
 
 type Game = {
   name: string;
@@ -72,18 +72,34 @@ const FullGamepad: GamepadInput = {
 };
 
 function App() {
+  const selectedCardRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [games, setGames] = useState<Game[]>([]);
+  const [allGames, setAllGames] = useState<Game[]>([]);
+  const [displayedGames, setDisplayedGames] = useState<Game[]>([]);
   const [currentInput, setCurrentInput] = useState<GamepadInput>(BlankGamepad);
   const [lastInput, setLastInput] = useState<GamepadInput>(BlankGamepad);
   const [launching, setLaunching] = useState(false);
+  const [showAllGames, setShowAllGames] = useState(false);
 
   const [playRightButton] = useSound(rightButtonSound);
   const [playLeftButton] = useSound(leftButtonSound);
   const [playSelectButton] = useSound(selectButtonSound);
 
   const cols = 6;
-  const rows = 3;
+
+  const toggleShowAllGames = () => {
+    playSelectButton();
+    setShowAllGames((prev) => !prev);
+    setSelectedIndex(0);
+  };
+
+  useEffect(() => {
+    if (showAllGames) {
+      setDisplayedGames(allGames);
+    } else {
+      setDisplayedGames(allGames.filter((game) => game.active));
+    }
+  }, [showAllGames, allGames]);
 
   const handleLeft = () => {
     const currentCol = selectedIndex % cols;
@@ -97,7 +113,7 @@ function App() {
   const handleRight = () => {
     const currentCol = selectedIndex % cols;
 
-    if (currentCol < cols - 1 && selectedIndex < games.length - 1) {
+    if (currentCol < cols - 1 && selectedIndex < displayedGames.length - 1) {
       playRightButton();
       setSelectedIndex(selectedIndex + 1);
     }
@@ -115,14 +131,17 @@ function App() {
   const handleDown = () => {
     const currentRow = Math.floor(selectedIndex / cols);
 
-    if (currentRow < rows - 1 && selectedIndex + cols < games.length) {
+    if (
+      currentRow < Math.ceil(displayedGames.length / cols) - 1 &&
+      selectedIndex + cols < displayedGames.length
+    ) {
       playRightButton();
       setSelectedIndex(selectedIndex + cols);
     }
   };
 
   const handleEnter = () => {
-    if (games.length == 0) return;
+    if (displayedGames.length == 0) return;
 
     playSelectButton();
     setLaunching(true);
@@ -145,7 +164,7 @@ function App() {
       document.removeEventListener("visibilitychange", focusHandler);
     }, 10000);
 
-    window.location.href = "vgdcgame:" + games[selectedIndex].command;
+    window.location.href = "vgdcgame:" + displayedGames[selectedIndex].command;
   };
 
   const handleKeyDown = (event: any) => {
@@ -176,12 +195,26 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [games, selectedIndex]);
+  }, [displayedGames, selectedIndex]);
+
+  // for scrolling when keys select on screen
+  useEffect(() => {
+    if (displayedGames.length > 0 && selectedCardRef.current) {
+      selectedCardRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+    }
+  }, [selectedIndex, displayedGames]);
 
   const getGames = async () => {
     const response = await fetch("/games/games.json");
     const data = await response.json();
-    if (data) setGames(data.filter((game: Game) => game.active));
+    if (data) {
+      setAllGames(data);
+      setDisplayedGames(data.filter((game: Game) => game.active));
+    }
   };
 
   let start: number;
@@ -260,24 +293,41 @@ function App() {
   }, []);
 
   return (
-    <main className="bg-[#06050A] h-screen w-screen text-white font-inter overflow-hiddem flex flex-col">
-      <div className="bg-gray-500/20 absolute rounded-full m-5 p-4 flex flex-col items-center gap-4 opacity-10 hover:opacity-100 transition-all">
-        <Dices size={24} className="text-gray-500 hover:text-white" />
-        <Plus size={24} className="text-gray-500 hover:text-white" />
+    <main className="bg-[#06050A] h-screen w-screen text-white font-inter flex flex-col">
+      <div className="bg-gray-500/20 absolute rounded-full m-5 p-2 flex flex-col items-center opacity-30 hover:opacity-100 transition-all">
+        <button className="p-2 text-gray-500 hover:text-white rounded-full">
+          <Dices size={24} />
+        </button>
+        <button
+          className="p-2 rounded-full group"
+          onClick={toggleShowAllGames}
+          title={showAllGames ? "Show Selection" : "Show All"}
+        >
+          {showAllGames ? (
+            <Eye
+              size={24}
+              className="text-[#50d0a1] group-hover:text-[#50d0a1]/80"
+            />
+          ) : (
+            <Eye size={24} className="text-gray-500 group-hover:text-white" />
+          )}
+        </button>
       </div>
       <Loading isVisible={launching} />
 
       {/* Game Grid */}
-      <div className="h-[90%] p-12">
-        <div className="h-full flex justify-center">
-          <div className="grid grid-cols-6 gap-12 auto-rows-fr">
-            {games.map((game, i) => (
+      <div className="flex-1 overflow-y-auto p-12 hide-scrollbar">
+        <div className="flex justify-center px-70">
+          {/* no more auto-rows-fr here */}
+          <div className="grid grid-cols-6 gap-12">
+            {displayedGames.map((game, i) => (
               <GameCard
                 key={i}
                 game={game}
                 isSelected={i === selectedIndex}
                 tier={game.tier}
                 onClick={() => setSelectedIndex(i)}
+                ref={i === selectedIndex ? selectedCardRef : null}
               />
             ))}
           </div>
@@ -286,10 +336,10 @@ function App() {
       {/* InfoBar */}
       <div className="flex px-12 items-center justify-center">
         <InfoBar
-          gameName={games[selectedIndex]?.name || "SELECT GAME"}
-          date={games[selectedIndex]?.year || "----"}
-          difficulty={games[selectedIndex]?.difficulty || 0}
-          gameCreators={games[selectedIndex]?.creators || "----"}
+          gameName={displayedGames[selectedIndex]?.name || "SELECT GAME"}
+          date={displayedGames[selectedIndex]?.year || "----"}
+          difficulty={displayedGames[selectedIndex]?.difficulty || 0}
+          gameCreators={displayedGames[selectedIndex]?.creators || "----"}
         />
         {/* <img src="./assets/VGDC-logo.png" className="w-36" /> */}
       </div>
