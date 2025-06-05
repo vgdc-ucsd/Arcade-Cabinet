@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useSound from "use-sound";
 import rightButtonSound from "/sounds/button_right.wav";
 import leftButtonSound from "/sounds/button_left.wav";
 import selectButtonSound from "/sounds/button_select.wav";
-
-const count = 18;
+import GameCard from "./components/GameCard";
+import InfoBar from "./components/InfoBar";
+import Loading from "./components/Loading";
+import { Dices, Eye } from "lucide-react";
 
 type Game = {
-  name: String;
-  thumbnail: String;
-  description: String;
-  creators: String;
-  command: String;
-  year: String;
+  name: string;
+  thumbnail: string;
+  description: string;
+  creators: string;
+  command: string;
+  year: string;
   active: boolean;
+  tier: number;
+  difficulty: number;
 };
 
 type GamepadInput = {
@@ -67,54 +71,108 @@ const FullGamepad: GamepadInput = {
   start: true,
 };
 
-const positiveModulo = (val: number, mod: number) => {
-  return ((val % mod) + mod) % mod;
-};
-
 function App() {
-  const [index, setIndex] = useState(0);
-  const [games, setGames] = useState<Game[]>([]);
+  const selectedCardRef = useRef<HTMLDivElement>(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [allGames, setAllGames] = useState<Game[]>([]);
+  const [displayedGames, setDisplayedGames] = useState<Game[]>([]);
   const [currentInput, setCurrentInput] = useState<GamepadInput>(BlankGamepad);
   const [lastInput, setLastInput] = useState<GamepadInput>(BlankGamepad);
-  const [launching, setLaunching] = useState("");
+  const [launching, setLaunching] = useState(false);
+  const [showAllGames, setShowAllGames] = useState(false);
 
   const [playRightButton] = useSound(rightButtonSound);
   const [playLeftButton] = useSound(leftButtonSound);
   const [playSelectButton] = useSound(selectButtonSound);
 
+  const cols = 6;
+
+  const toggleShowAllGames = () => {
+    playSelectButton();
+    setShowAllGames((prev) => !prev);
+    setSelectedIndex(0);
+  };
+
+  useEffect(() => {
+    if (showAllGames) {
+      setDisplayedGames(allGames);
+    } else {
+      setDisplayedGames(allGames.filter((game) => game.active));
+    }
+  }, [showAllGames, allGames]);
+
   const handleLeft = () => {
-    playLeftButton();
-    setIndex((i) => i - 1);
+    const currentCol = selectedIndex % cols;
+
+    if (currentCol > 0) {
+      playLeftButton();
+      setSelectedIndex(selectedIndex - 1);
+    }
   };
 
   const handleRight = () => {
-    playRightButton();
-    setIndex((i) => i + 1);
+    const currentCol = selectedIndex % cols;
+
+    if (currentCol < cols - 1 && selectedIndex < displayedGames.length - 1) {
+      playRightButton();
+      setSelectedIndex(selectedIndex + 1);
+    }
+  };
+
+  const handleUp = () => {
+    const currentRow = Math.floor(selectedIndex / cols);
+
+    if (currentRow > 0) {
+      playLeftButton();
+      setSelectedIndex(selectedIndex - cols);
+    }
+  };
+
+  const handleDown = () => {
+    const currentRow = Math.floor(selectedIndex / cols);
+
+    if (
+      currentRow < Math.ceil(displayedGames.length / cols) - 1 &&
+      selectedIndex + cols < displayedGames.length
+    ) {
+      playRightButton();
+      setSelectedIndex(selectedIndex + cols);
+    }
   };
 
   const handleEnter = () => {
-    if (games.length == 0) return;
+    if (displayedGames.length == 0) return;
 
     playSelectButton();
-    window.location.href =
-      "vgdcgame:" + games[positiveModulo(index, games.length)].command;
-    // Launching text
-    setLaunching("Launching...");
-    const handleLaunch = (i: number) => {
-      if (i > 0) {
-        setLaunching((val) => val + ".");
-        setTimeout(() => handleLaunch(i - 1), 1000);
-      } else {
-        setLaunching("");
+    setLaunching(true);
+
+    // event listener for when window loses focus
+    const focusHandler = () => {
+      if (document.hidden) {
+        setTimeout(() => {
+          setLaunching(false);
+          document.removeEventListener("visibilitychange", focusHandler);
+          clearTimeout(fallbackTimer);
+        }, 1000);
       }
     };
-    setTimeout(() => handleLaunch(7), 1000);
+    document.addEventListener("visibilitychange", focusHandler);
+
+    // cancel after 10 seconds
+    const fallbackTimer = setTimeout(() => {
+      setLaunching(false);
+      document.removeEventListener("visibilitychange", focusHandler);
+    }, 10000);
+
+    window.location.href = "vgdcgame:" + displayedGames[selectedIndex].command;
   };
 
   const handleKeyDown = (event: any) => {
     if (event.repeat) return;
     if (event.key == "ArrowLeft") handleLeft();
     if (event.key == "ArrowRight") handleRight();
+    if (event.key == "ArrowUp") handleUp();
+    if (event.key == "ArrowDown") handleDown();
     if (event.key == "Enter") handleEnter();
   };
 
@@ -123,8 +181,12 @@ function App() {
     if (currentInput.start && !lastInput.start) handleEnter();
     if (currentInput.stick_left && !lastInput.stick_left) handleLeft();
     if (currentInput.stick_right && !lastInput.stick_right) handleRight();
+    if (currentInput.stick_up && !lastInput.stick_up) handleUp();
+    if (currentInput.stick_down && !lastInput.stick_down) handleDown();
     if (currentInput.dpad_left && !lastInput.dpad_left) handleLeft();
     if (currentInput.dpad_right && !lastInput.dpad_right) handleRight();
+    if (currentInput.dpad_up && !lastInput.dpad_up) handleUp();
+    if (currentInput.dpad_down && !lastInput.dpad_down) handleDown();
     setLastInput(currentInput);
   }, [currentInput]);
 
@@ -133,12 +195,26 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [games, index]);
+  }, [displayedGames, selectedIndex]);
+
+  // for scrolling when keys select on screen
+  useEffect(() => {
+    if (displayedGames.length > 0 && selectedCardRef.current) {
+      selectedCardRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+    }
+  }, [selectedIndex, displayedGames]);
 
   const getGames = async () => {
     const response = await fetch("/games/games.json");
     const data = await response.json();
-    if (data) setGames(data.filter((game: Game) => game.active));
+    if (data) {
+      setAllGames(data);
+      setDisplayedGames(data.filter((game: Game) => game.active));
+    }
   };
 
   let start: number;
@@ -217,84 +293,57 @@ function App() {
   }, []);
 
   return (
-    <main className="bg-[#06050a] h-screen absolute w-screen text-white font-inter overflow-clip">
-      <div className="absolute top-6 left-4 text-white text-3xl font-inter animate-bounce">
-        {launching}
+    <main className="bg-[#06050A] h-screen w-screen text-white font-inter flex flex-col">
+      <div className="bg-gray-500/20 absolute rounded-full m-5 p-2 flex flex-col items-center opacity-30 hover:opacity-100 transition-all">
+        <button className="p-2 text-gray-500 hover:text-white rounded-full">
+          <Dices size={24} />
+        </button>
+        <button
+          className="p-2 rounded-full group"
+          onClick={toggleShowAllGames}
+          title={showAllGames ? "Show Selection" : "Show All"}
+        >
+          {showAllGames ? (
+            <Eye
+              size={24}
+              className="text-[#50d0a1] group-hover:text-[#50d0a1]/80"
+            />
+          ) : (
+            <Eye size={24} className="text-gray-500 group-hover:text-white" />
+          )}
+        </button>
       </div>
-      <div className="absolute w-full h-fit top-[50%] -translate-y-[50%]">
-        {/* Centerpiece */}
-        <div className="w-128 mx-auto h-fit">
-          <img src="./assets/VGDC-logo.png" className="w-80 mx-auto" />
-          <h1 className="text-center mt-6 text-4xl font-semibold">
-            Arcade Machine
-          </h1>
-          <h3 className="text-center mt-2 text-lg">
-            Games made by VGDC members!
-            <br />
-            Join us at{" "}
-            <a
-              className="text-[#50d0a1] font-semibold"
-              href="https://www.vgdc.dev"
-            >
-              vgdc.dev
-            </a>
-            !
-          </h3>
-        </div>
-        <div className="h-140 perspective-distant">
-          <div
-            style={{
-              transform: `translateZ(-${Math.round(
-                1000 / 2 / Math.tan(Math.PI / count)
-              )}px) rotateY(${(-index * 360) / count}deg)`,
-            }}
-            className="w-full transition-all top-[10%] transform-3d duration-300"
-          >
-            {games.map((game, i) => (
-              <Game
-                index={i}
-                currentPosition={index}
-                totalGames={games.length}
-                game={game}
+      <Loading isVisible={launching} />
+
+      {/* Game Grid */}
+      <div className="flex-1 overflow-y-auto p-12 hide-scrollbar">
+        <div className="flex justify-center px-70">
+          {/* no more auto-rows-fr here */}
+          <div className="grid grid-cols-6 gap-12">
+            {displayedGames.map((game, i) => (
+              <GameCard
                 key={i}
+                game={game}
+                isSelected={i === selectedIndex}
+                tier={game.tier}
+                onClick={() => setSelectedIndex(i)}
+                ref={i === selectedIndex ? selectedCardRef : null}
               />
             ))}
           </div>
         </div>
       </div>
-    </main>
-  );
-}
-
-function Game({ index, currentPosition, totalGames, game }: any) {
-  // Some fancy math to decide the rotation
-  let z = Math.round(1000 / 2 / Math.tan(Math.PI / count));
-
-  let newIndex =
-    index +
-    totalGames * Math.floor((currentPosition - index) / totalGames + 0.5);
-
-  let rotateY = (newIndex * 360) / count;
-
-  return (
-    <a
-      id={`startgame:${index}`}
-      href={`vgdcgame:${game.command}`}
-      style={{ transform: `rotateY(${rotateY}deg) translateZ(${z}px)` }}
-      className={`w-160 h-128 block absolute -translate-x-[50%] left-[50%] top-[5vh] transition-colors duration-300 backface-hidden`}
-    >
-      {/* <div className="absolute bg-[#50d0a1]/80 font-medium shadow-lg text-black px-1 rounded-md text-2xl top-3 left-3">
-        {game.year}
-      </div> */}
-      <img src={game.thumbnail} className="w-full"></img>
-      <div className="w-full whitespace-pre-line">
-        <h2 className="text-center mt-6 text-2xl font-semibold">{game.name}</h2>
-        <h3 className="text-center text-xl">{game.description}</h3>
-        <h4 className="text-center text-base font-light leading-6 mt-2">
-          By {game.creators}
-        </h4>
+      {/* InfoBar */}
+      <div className="flex px-12 items-center justify-center">
+        <InfoBar
+          gameName={displayedGames[selectedIndex]?.name || "SELECT GAME"}
+          date={displayedGames[selectedIndex]?.year || "----"}
+          difficulty={displayedGames[selectedIndex]?.difficulty || 0}
+          gameCreators={displayedGames[selectedIndex]?.creators || "----"}
+        />
+        {/* <img src="./assets/VGDC-logo.png" className="w-36" /> */}
       </div>
-    </a>
+    </main>
   );
 }
 
