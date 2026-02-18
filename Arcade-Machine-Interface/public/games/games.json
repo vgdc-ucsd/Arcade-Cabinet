@@ -6,9 +6,7 @@
     "creators": "Paperboy Games",
     "command": "C:\\Cabinet\\Games\\Contract Killer\\Contract Killer.exe",
     "year": "2022",
-    "active": false,
-    "tier": 1,
-    "difficulty": 0
+    "active": false
   },
   {
     "name": "HYPERFIGHT",
@@ -17,9 +15,7 @@
     "creators": "Justin Oh",
     "command": "C:\\Cabinet\\Games\\HYPERFIGHT\\HYPERFIGHT.exe",
     "year": "2019",
-    "active": false,
-    "tier": 1,
-    "difficulty": 1
+    "active": false
   },
   {
     "name": "2P Co-op Game",
@@ -28,9 +24,7 @@
     "creators": "Dylan Govic, Adam Beck",
     "command": "C:\\Cabinet\\Games\\2 P Coop Game\\Brackeys Jam 2022.exe",
     "year": "2022",
-    "active": false,
-    "tier": 1,
-    "difficulty": 2
+    "active": false
   },
   {
     "name": "Ninja Fever",
@@ -39,9 +33,7 @@
     "creators": "Tim Wang",
     "command": "C:\\Cabinet\\Games\\Ninja Fever\\vgdcFallGameJam.exe",
     "year": "2016",
-    "active": false,
-    "tier": 1,
-    "difficulty": 3
+    "active": false
   },
   {
     "name": "Boxes",
@@ -50,31 +42,25 @@
     "creators": "Patrick Traynor",
     "command": "C:\\Cabinet\\Games\\Boxes\\boxes.exe",
     "year": "2018",
-    "active": false,
-    "tier": 1,
-    "difficulty": 0
+    "active": false
   },
   {
     "name": "Evil Incarnate",
-    "thumbnail": "/games/pictures/evil-incarnate.png",
+    "thumbnail": "/games/pictures/EvilIncarnateThumbnail.png",
     "description": "[1P] A horror game.",
     "creators": "Ethan Schwartzman, Kevin Tang,\nAnnie Wong, and Zee Avila",
     "command": "C:\\Cabinet\\Games\\Evil Incarnate\\VGDC-Project.exe",
     "year": "2023",
-    "active": true,
-    "tier": 1,
-    "difficulty": 4
+    "active": true
   },
   {
     "name": "pubert",
-    "thumbnail": "/games/pictures/pubert.png",
+    "thumbnail": "/games/pictures/PubertThumbnail.png",
     "description": "[1P] Restore color to a forgotten land!",
     "creators": "Dylan Govic, Marcus Kry, David Liu, Louis Zimmerer",
     "command": "C:\\Cabinet\\Games\\pubert\\UCSD Combination.exe",
     "year": "2022",
-    "active": true,
-    "tier": 1,
-    "difficulty": 2
+    "active": true
   },
   {
     "name": "TAKYON",
@@ -83,9 +69,7 @@
     "description": "[1P] PARTICLE EXPERIMENT TO DISCOVER MAXIMUM C VALUE - JUN 5, 1985",
     "command": "C:\\Cabinet\\Games\\TAKYON\\Science CCGJ.exe",
     "year": "2022",
-    "active": true,
-    "tier": 1,
-    "difficulty": 3
+    "active": true
   },
   {
     "name": "norbert the pumpkin",
@@ -94,9 +78,7 @@
     "description": "[1P] Help Norbert collect all of the candy corn!",
     "command": "C:\\Cabinet\\Games\\norbert the pumpkin\\UCSDTrickOrTreat.exe",
     "year": "2022",
-    "active": false,
-    "tier": 1,
-    "difficulty": 0
+    "active": false
   },
   {
     "name": "Don't Space Out",
@@ -105,9 +87,7 @@
     "creators": "Ethan Schwartzman, Annie Wong, Breanna Lau,\nJacky Mei, Zee Avila, and Kevin Tang",
     "command": "C:\\Cabinet\\Games\\Don't Space Out\\Tritonware-Spring-2024.exe",
     "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 0
+    "active": true
   },
   {
     "name": "Unit 108",
@@ -116,9 +96,7 @@
     "creators": "LS Studios",
     "command": "C:\\Cabinet\\Games\\Unit 108\\Unit 108.exe",
     "year": "2019",
-    "active": false,
-    "tier": 1,
-    "difficulty": 0
+    "active": false
   },
   {
     "name": "Chicken Odyssey",
@@ -127,42 +105,34 @@
     "creators": "Alex Hawker",
     "command": "C:\\Cabinet\\Games\\Chicken Odyssey\\chicken_odyssey.exe",
     "year": "2016",
-    "active": false,
-    "tier": 1,
-    "difficulty": 0
+    "active": false
   },
   {
     "name": "Patrick's Parabox (Pre-Release)",
-    "thumbnail": "/games/pictures/parabox.png",
+    "thumbnail": "/games/pictures/PatricksParaboxThumbnail.png",
     "description": "[1P] Explore recursion by pushing boxes inside of boxes.",
     "creators": "Patrick Traynor",
     "command": "C:\\Cabinet\\Games\\Patrick's Parabox\\Patrick's Parabox.exe",
     "year": "2019",
-    "active": true,
-    "tier": 3,
-    "difficulty": 0
+    "active": true
   },
   {
     "name": "Predetermined",
-    "thumbnail": "/games/pictures/predetermined.png",
+    "thumbnail": "/games/pictures/PredeterminedThumbnail.png",
     "description": "[1P] Push boxes. Solve puzzles. Repeat.",
     "creators": "Steven Miller",
     "command": "C:\\Cabinet\\Games\\Predetermined\\Predetermined.exe",
     "year": "2018",
-    "active": false,
-    "tier": 1,
-    "difficulty": 0
+    "active": false
   },
   {
     "name": "Omelettes",
     "thumbnail": "/games/pictures/omelettes.png",
     "description": "[1P] A puzzle game about breaking a few eggs.",
     "creators": "Steven Miller",
-    "command": "C:\\Cabinet\\Games\\Omelettes\\Omelettes.exe",
+    "command": "C:\\Cabinet\\Games\\Omelettes\\Omelettes Arcade.exe",
     "year": "2019",
-    "active": false,
-    "tier": 1,
-    "difficulty": 0
+    "active": true
   },
   {
     "name": "Colors",
@@ -171,140 +141,128 @@
     "creators": "Patrick Traynor",
     "command": "C:\\Cabinet\\Games\\Colors\\Colors.exe",
     "year": "2018",
-    "active": true,
-    "tier": 1,
-    "difficulty": 0
+    "active": true
   },
   {
     "name": "Panda",
-    "thumbnail": "/games/pictures/panda.png",
+    "thumbnail": "/games/pictures/PandaThumbnail.png",
     "description": "[1P] An immersive experience.",
     "creators": "Patrick Traynor",
-    "command": "C:\\Users\\johnzhou\\Downloads\\panda.exe",
+    "command": "C:\\Cabinet\\Games\\Panda\\panda.exe",
     "year": "2017",
-    "active": true,
-    "tier": 2,
-    "difficulty": 0
+    "active": true
   },
   {
     "name": "Spellthief",
-    "thumbnail": "/games/pictures/spellthief.png",
+    "thumbnail": "/games/pictures/SpellthiefThumbnail.png",
     "description": "[1P] A Halloween-themed bullet hell adventure.",
     "creators": "Nick Droppa, Chase Peterson, Trey Shneour,\nNick Petrone, and James Villareal",
     "command": "C:\\Cabinet\\Games\\Spellthief\\Spellthief (Arcade).exe",
     "year": "2023",
-    "active": true,
-    "tier": 3,
-    "difficulty": 0
+    "active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 0
+	"name": "Bedtime Beats",
+	"thumbnail": "/games/pictures/BedtimeBeatsThumbnail.png",
+	"description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
+	"creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
+	"command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
+	"year": "2024",
+	"active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 0
+	  "name": "Cloudburst",
+	  "thumbnail": "/games/pictures/CloudburstThumbnail.png",
+	  "description": "[2P] Fight to survive on an alien planet!",
+	  "creators": "Aslan Chan, Jonathan Renteria, Jolina Leong, Tiffany Phan",
+	  "command": "C:\\Cabinet\\Games\\Cloudburst\\Cloudburst TritonWare.exe",
+	  "year": "2024",
+	  "active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 0
+    "name": "Paper Heart",
+    "thumbnail": "/games/pictures/PaperHeartThumbnail.png",
+    "description": "When you find that there was a hole in your chest where your heart once was, the only reasonable thing to do is go chase after it.",
+    "creators": "Annie, CloudyDerp, Jess, Jolina, Josh",
+    "command": "C:\\Cabinet\\Games\\PaperHeart\\PaperHeart.exe",
+    "year": "2023",
+    "active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 4
+    "name": "Hang Man",
+    "thumbnail": "/games/pictures/HangManThumbnail.png",
+    "description": "When you find that there was a hole in your chest where your heart once was, the only reasonable thing to do is go chase after it.",
+    "creators": "Karim Barajas, Milay Galbraith, Milay Galbraith, Sebastian Hill, Xavier Chua",
+    "command": "C:\\Cabinet\\Games\\HangMan\\HangMan(Arcade).exe",
+    "year": "2025",
+    "active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 3
+    "name": "Let's Go Crambling",
+    "thumbnail": "/games/pictures/LetsGoCramblingThumbnail.png",
+    "description": "When you find that there was a hole in your chest where your heart once was, the only reasonable thing to do is go chase after it.",
+    "creators": "Andrew Khov, Annie Wong, Duy Ngyuen, Isabel Hsieh, Kevin Tang",
+    "command": "C:\\Cabinet\\Games\\Let's Go Crambling\\Triton Gambling.exe",
+    "year": "2025",
+    "active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 1
+    "name": "Petal and Metal",
+    "thumbnail": "/games/pictures/PetalandMetalThumbnail.png",
+    "description": "When you find that there was a hole in your chest where your heart once was, the only reasonable thing to do is go chase after it.",
+    "creators": "Austin Gandy, Ever, Jun, Sahil, Yadi",
+    "command": "C:\\Cabinet\\Games\\Petal and Metal\\Petal and Metal.exe",
+    "year": "2023",
+    "active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 2
+    "name": "SNAKE2",
+    "thumbnail": "/games/pictures/Snake2Thumbnail.png",
+    "description": "When you find that there was a hole in your chest where your heart once was, the only reasonable thing to do is go chase after it.",
+    "creators": "Kiichi, John, Sebastian, Aslan, Chanel, chase",
+    "command": "C:\\Cabinet\\Games\\SNAKE2\\TritonWare Spr' 2025.exe",
+    "year": "2025",
+    "active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 0
+    "name": "Stratagem",
+    "thumbnail": "/games/pictures/stratagem.png",
+    "description": "",
+    "creators": "Jacky, Cass",
+    "command": "C:\\Cabinet\\Games\\Stratagem\\Stratagem.exe",
+    "year": "2025",
+    "active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 0
+    "name": "OSSA",
+    "thumbnail": "/games/pictures/OSSA.png",
+    "description": "Fend off incoming waves of monsters using only two buttons!",
+    "creators": "Nathan Scott, Annie Wong, Jolina Leong",
+    "difficulty": 3,
+    "command": "C:\\Cabinet\\Games\\OSSA\\tinyware-fa25.exe",
+    "year": "2025",
+    "active": true
   },
   {
-    "name": "Bedtime Beats",
-    "thumbnail": "/games/pictures/bedtime-beats.png",
-    "description": "[1P] You're a kid playing a rhythm game past your bedtime, try not to get caught!",
-    "creators": "Erin Rew, Dzaiddin bin Mohd Khazani,\nJonathan Renteria, Bree Tassinari, Breanna Lau",
-    "command": "C:\\Cabinet\\Games\\Bedtime Beats\\Bedtime Beats.exe",
-    "year": "2024",
-    "active": true,
-    "tier": 1,
-    "difficulty": 0
+    "name": "Espadon",
+    "thumbnail": "/games/pictures/espadon.png",
+    "description": "The player uses just two buttons to make a swordfish flop left and right to swim around. They fight off endless waves of enemies by swimming into them with their sword nose and dodging attacks.",
+    "creators": "Drake Fillingim, Abdurrahman Syed, Noah Teng, Duy Nguyen",
+    "difficulty": 4,
+    "command": "C:\\Cabinet\\Games\\Espadon\\TeenyTinyware FA25.exe",
+    "year": "2025",
+    "active": true
+  },
+  {
+    "name": "down",
+    "thumbnail": "/games/pictures/down.png",
+    "description": "Rhythm game where you play as a mole, who is trying to dig down. Made for teeny-tinyware!",
+    "creators": "Nick Mitroff",
+    "difficulty": 5,
+    "command": "C:\\Cabinet\\Games\\Down\\TinywareFall2025.exe",
+    "year": "2025",
+    "active": true
   }
+  
+
 ]
