@@ -262,6 +262,46 @@
     "command": "C:\\Cabinet\\Games\\Down\\TinywareFall2025.exe",
     "year": "2025",
     "active": true
+  },
+  {
+    "name": "Pinball Pursuit",
+    "thumbnail": "/games/pictures/pinball-pursuit.png",
+    "description": "Pinball Pursuit is a pinball-based game where you have a limited amount of time to progress through different levels and gain increasing amounts of points along the way.",
+    "creators": "Max Fisch",
+    "difficulty": 3,
+    "command": "C:\\Cabinet\\Games\\Pinball Pursuit\\Pinball.exe",
+    "year": "2025",
+    "active": true
+  },
+  {
+    "name": "Depth Stranding",
+    "thumbnail": "/games/pictures/depth-stranding.jpg",
+    "description": "Collect metal scraps, avoid comets and asteroids, and find NPCs and cows in space!",
+    "creators": "Ethan Carter, Luyuan Zhu, Jose Barcelo, Elijah Garcia",
+    "difficulty": 3,
+    "command": "C:\\Cabinet\\Games\\Depth Stranding\\space_fishing.exe",
+    "year": "2025",
+    "active": true
+  },
+  {
+    "name": "Reel It In",
+    "thumbnail": "/games/pictures/reel-it-in.png",
+    "description": "A multiplayer fishing game where you play as VGDC mascots (Doug and Vivi) to compete for the most fish in weight!",
+    "creators": "Andrew Khov, Aslan Chan, Elijah Garcia, Tamika Hsieh, Timothy Washburn",
+    "difficulty": 4,
+    "command": "C:\\Cabinet\\Games\\Reel It In\\teeny-tiny-fish.exe",
+    "year": "2025",
+    "active": true
+  },
+  {
+    "name": "Stellar Service",
+    "thumbnail": "/games/pictures/StellarServiceThumbnail.png",
+    "description": "In the cold, unforgiving vacuum of space, hospitality is hard to come by. Luckily, a quaint diner floating amidst the stars is here to serve up some classic alien comfort food; that is, as long as everything can stay on the plate. ",
+    "creators": "Breanna, Bree, Jess, Jolina, Joshua, Marissa, Tiffany",
+    "difficulty": 3,
+    "command": "C:\\Cabinet\\Games\\Stellar Service\\StellarService.exe",
+    "year": "2025",
+    "active": true
   }
   
 

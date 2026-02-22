@@ -74,7 +74,7 @@ const GameCard = forwardRef<HTMLDivElement, GameCardProps>(
         onClick={onClick}
       >
         <div
-          className={`${getCasing()} rounded-4xl h-19/20 flex flex-col ${
+          className={`${getCasing()} rounded-4xl w-full h-19/20 flex flex-col ${
             isSelected ? `${getGlow()}` : ""
           }`}
         >
