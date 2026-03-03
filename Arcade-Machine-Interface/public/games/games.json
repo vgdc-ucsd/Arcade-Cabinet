@@ -239,7 +239,7 @@
     "description": "Fend off incoming waves of monsters using only two buttons!",
     "creators": "Nathan Scott, Annie Wong, Jolina Leong",
     "difficulty": 3,
-    "command": "C:\\Cabinet\\Games\\OSSA\\tinyware-fa25.exe",
+    "command": "C:\\Cabinet\\Games\\OSSA\\Ossa.exe",
     "year": "2025",
     "active": true
   },
@@ -302,7 +302,16 @@
     "command": "C:\\Cabinet\\Games\\Stellar Service\\StellarService.exe",
     "year": "2025",
     "active": true
-  }
-  
+  },
+  {
+    "name": "Fishing With Goober",
+    "thumbnail": "/games/pictures/fishing-with-goober.png",
+    "description": "You are a fish with legs controlling a boat on water. Fish jump in the air out of the water and you are trying to catch them with your net.",
+    "creators": "Johannes, Dzaiddin, Quinton, Nikita, Thanh",
+    "difficulty": 5,
+    "command": "C:\\Cabinet\\Games\\Fishing With Goober\\Goober.exe",
+    "year": "2025",
+    "active": true
+  } 
 
 ]
